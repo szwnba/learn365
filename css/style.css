@@ -268,12 +268,12 @@ figure figcaption {
   position: relative;
   width: 80%;
   margin: 0 auto;
-  padding: 3em 0;
+  padding: 2em 0;
 }
 @media screen and (max-width: 768px) {
   #fh5co-main .fh5co-narrow-content {
     width: 100%;
-    padding: 3.5em 1em;
+    padding: 1em 1em;
   }
 }
 
