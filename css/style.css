@@ -305,17 +305,17 @@ figure figcaption {
 }
 @media screen and (max-width: 1200px) {
   .fh5co-gallery .gallery-item {
-    width: 50%;
+    width: 33.3333%;
   }
 }
 @media screen and (max-width: 768px) {
   .fh5co-gallery .gallery-item {
-    width: 50%;
+    width: 33.3333%;
   }
 }
 @media screen and (max-width: 480px) {
   .fh5co-gallery .gallery-item {
-    width: 50%;
+    width: 33.3333%;
   }
 }
 .fh5co-gallery .gallery-item .overlay {
