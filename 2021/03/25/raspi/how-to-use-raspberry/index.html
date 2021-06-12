@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;learn365.top&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.5.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:false,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;Searching...&quot;,&quot;empty&quot;:&quot;We didn&#39;t find any results for the search: ${query}&quot;,&quot;hits_time&quot;:&quot;${hits} results found in ${time} ms&quot;,&quot;hits&quot;:&quot;${hits} results found&quot;}}</script><script src="/js/config.js"></script>
+<meta name="description" content="1 前言1.1 树莓派是什么树莓派作为极客的玩具，对大众而言比较陌生。只有信用卡大小的它，同时也是一台功能完备的“电脑”， 用户可以在上面搭建各种服务和应用。   1.2 树莓派可以用来做什么购买4g内存以上的版本,一定要买外壳带风扇 可以安装宝塔面板和wordpress,并使用frp内网穿透 使用Docker部署各种Arm64应用 搭建Jenkins平台，持续集成运行各种应用脚本 部署pytho">
+<meta property="og:type" content="article">
+<meta property="og:title" content="玩转树莓派">
+<meta property="og:url" content="https://learn365.top/2021/03/25/raspi/how-to-use-raspberry/index.html">
+<meta property="og:site_name" content="Learn365">
+<meta property="og:description" content="1 前言1.1 树莓派是什么树莓派作为极客的玩具，对大众而言比较陌生。只有信用卡大小的它，同时也是一台功能完备的“电脑”， 用户可以在上面搭建各种服务和应用。   1.2 树莓派可以用来做什么购买4g内存以上的版本,一定要买外壳带风扇 可以安装宝塔面板和wordpress,并使用frp内网穿透 使用Docker部署各种Arm64应用 搭建Jenkins平台，持续集成运行各种应用脚本 部署pytho">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://learn365.top/2021/03/25/raspi/how-to-use-raspberry/raspberry-pi-4-labelled-2857741801afdf1cabeaa58325e07b58.png">
+<meta property="og:image" content="https://learn365.top/2021/03/25/raspi/how-to-use-raspberry/image-20210327000301428.png">
+<meta property="og:image" content="https://learn365.top/2021/03/25/raspi/how-to-use-raspberry/image-20210327001149753.png">
+<meta property="og:image" content="https://learn365.top/2021/03/25/raspi/how-to-use-raspberry/20170222174817450.jpg">
+<meta property="og:image" content="https://learn365.top/2021/03/25/raspi/how-to-use-raspberry/20170222173442440.jpg">
+<meta property="og:image" content="https://learn365.top/2021/03/25/raspi/how-to-use-raspberry/20170222173830443.jpg">
+<meta property="og:image" content="https://learn365.top/2021/03/25/raspi/how-to-use-raspberry/20170222174833450.jpg">
+<meta property="og:image" content="https://learn365.top/2021/03/25/raspi/how-to-use-raspberry/20170222173926444.jpg">
+<meta property="og:image" content="https://learn365.top/2021/03/25/raspi/how-to-use-raspberry/202012111039415422.png">
+<meta property="og:image" content="https://learn365.top/2021/03/25/raspi/how-to-use-raspberry/202012111042566653.png">
+<meta property="og:image" content="https://learn365.top/2021/03/25/raspi/how-to-use-raspberry/202012111040305833.png">
+<meta property="og:image" content="https://learn365.top/2021/03/25/raspi/how-to-use-raspberry/202012111043466105.png">
+<meta property="article:published_time" content="2021-03-24T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-06-07T17:09:19.542Z">
+<meta property="article:author" content="Johnson">
+<meta property="article:tag" content="raspberry">
+<meta property="article:tag" content="树莓派">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://learn365.top/2021/03/25/raspi/how-to-use-raspberry/raspberry-pi-4-labelled-2857741801afdf1cabeaa58325e07b58.png">
+
+
+<link rel="canonical" href="https://learn365.top/2021/03/25/raspi/how-to-use-raspberry/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;en&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;learn365.top&#x2F;2021&#x2F;03&#x2F;25&#x2F;raspi&#x2F;how-to-use-raspberry&#x2F;&quot;,&quot;path&quot;:&quot;2021&#x2F;03&#x2F;25&#x2F;raspi&#x2F;how-to-use-raspberry&#x2F;&quot;,&quot;title&quot;:&quot;玩转树莓派&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>玩转树莓派 | Learn365</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Learn365</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Keep Learning</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-devops"><a href="/categories/devops/" rel="section"><i class="fa fa-book fa-fw fa-fw"></i>devops</a></li>
+        <li class="menu-item menu-item-树莓派"><a href="/categories/raspi/" rel="section"><i class="fa fa-tags fa-fw"></i>树莓派</a></li>
+        <li class="menu-item menu-item-web"><a href="/categories/web/" rel="section"><i class="fa fa-calendar fa-fw"></i>web</a></li>
+        <li class="menu-item menu-item-vps"><a href="/categories/vps/" rel="section"><i class="fa fa-sitemap fa-fw"></i>vps</a></li>
+        <li class="menu-item menu-item-linux"><a href="/categories/linux/" rel="section"><i class="fa fa-flask fa-fw fa-fw"></i>linux</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">1 前言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-%E6%A0%91%E8%8E%93%E6%B4%BE%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 树莓派是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-%E6%A0%91%E8%8E%93%E6%B4%BE%E5%8F%AF%E4%BB%A5%E7%94%A8%E6%9D%A5%E5%81%9A%E4%BB%80%E4%B9%88"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 树莓派可以用来做什么</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E7%B3%BB%E7%BB%9F%E5%8F%8A%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">2 系统及应用安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-Debian-Pi-Aarch64-%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Debian-Pi-Aarch64 系统安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-Web%E5%8F%AF%E8%A7%86%E5%8C%96%E7%AE%A1%E7%90%86%E7%95%8C%E9%9D%A2"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 Web可视化管理界面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-CecOS-CaaS-%E5%AE%B9%E5%99%A8%E4%BA%91%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 CecOS CaaS 容器云管理平台</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 宝塔面板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85%E5%B8%B8%E7%94%A8%E5%BA%94%E7%94%A8"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 宝塔安装常用应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.6.</span> <span class="nav-text"></span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E6%89%A9%E5%B1%95%E5%BA%94%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">3 扩展应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-%E5%AE%89%E8%A3%85jenkins"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 安装jenkins</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-1-%E5%AE%89%E8%A3%85JAVA-JDK"><span class="nav-number">3.1.1.</span> <span class="nav-text">3.1.1 安装JAVA JDK</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-2-%E5%AE%89%E8%A3%85Jenkins-war"><span class="nav-number">3.1.2.</span> <span class="nav-text">3.1.2 安装Jenkins war</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-3-%E9%85%8D%E7%BD%AE"><span class="nav-number">3.1.3.</span> <span class="nav-text">3.1.3 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-4-%E6%9C%8D%E5%8A%A1%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4"><span class="nav-number">3.1.4.</span> <span class="nav-text">3.1.4 服务操作命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-%E5%AE%89%E8%A3%85wordpress"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 安装wordpress</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-%E5%AE%89%E8%A3%85%E8%8A%B1%E7%94%9F%E5%A3%B3"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 安装花生壳</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-1-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8"><span class="nav-number">3.3.1.</span> <span class="nav-text">3.3.1 安装与使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-2-%E9%85%8D%E7%BD%AE%E8%8A%B1%E7%94%9F%E5%A3%B3"><span class="nav-number">3.3.2.</span> <span class="nav-text">3.3.2 配置花生壳</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-%E9%83%A8%E7%BD%B2Python-Django%E7%BD%91%E7%AB%99%E7%B3%BB%E7%BB%9F"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 部署Python Django网站系统</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Johnson</p>
+  <div class="site-description" itemprop="description">温故而知新</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://learn365.top/2021/03/25/raspi/how-to-use-raspberry/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Johnson">
+      <meta itemprop="description" content="温故而知新">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Learn365">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          玩转树莓派
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-03-25 00:00:00" itemprop="dateCreated datePublished" datetime="2021-03-25T00:00:00+08:00">2021-03-25</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-06-08 01:09:19" itemprop="dateModified" datetime="2021-06-08T01:09:19+08:00">2021-06-08</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/raspi/" itemprop="url" rel="index"><span itemprop="name">raspi</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1 前言"></a>1 前言</h1><h2 id="1-1-树莓派是什么"><a href="#1-1-树莓派是什么" class="headerlink" title="1.1 树莓派是什么"></a>1.1 树莓派是什么</h2><p>树莓派作为极客的玩具，对大众而言比较陌生。只有信用卡大小的它，同时也是一台功能完备的“电脑”， 用户可以在上面搭建各种服务和应用。 </p>
+<p><img src="/2021/03/25/raspi/how-to-use-raspberry/raspberry-pi-4-labelled-2857741801afdf1cabeaa58325e07b58.png" alt="Raspberry Pi 4 Specifications"></p>
+<h2 id="1-2-树莓派可以用来做什么"><a href="#1-2-树莓派可以用来做什么" class="headerlink" title="1.2 树莓派可以用来做什么"></a>1.2 树莓派可以用来做什么</h2><p>购买4g内存以上的版本,一定要买外壳带风扇</p>
+<p>可以安装宝塔面板和wordpress,并使用frp内网穿透</p>
+<p>使用Docker部署各种Arm64应用</p>
+<p>搭建Jenkins平台，持续集成运行各种应用脚本</p>
+<p>部署python脚本,运行爬虫/bot,以及Restful API</p>
+<p>搭建GitLab代码仓库</p>
+<p>搭建nextcloud云盘</p>
+<h1 id="2-系统及应用安装"><a href="#2-系统及应用安装" class="headerlink" title="2 系统及应用安装"></a>2 系统及应用安装</h1><h2 id="2-1-Debian-Pi-Aarch64-系统安装"><a href="#2-1-Debian-Pi-Aarch64-系统安装" class="headerlink" title="2.1 Debian-Pi-Aarch64 系统安装"></a>2.1 Debian-Pi-Aarch64 系统安装</h2><p>1 <a target="_blank" rel="noopener" href="https://gitee.com/openfans-community/Debian-Pi-Aarch64">Debian-Pi-Aarch64</a> 版本网址及相关介绍</p>
+<p>2 使用SD 卡Format,并烧录系统后，用有线SSH连接登录：<br>    系统默认账户：pi ，默认密码：raspberry  </p>
+<p>3 更改网络开启WIFI</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">run <span class="built_in">command</span> <span class="string">&quot;systemctl disable network-manager&quot;</span> </span><br></pre></td></tr></table></figure>
+
+<p>4 修改 <code>/boot/wpa_supplicant.conf</code> 文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">network=&#123;</span><br><span class="line">ssid=&quot;Jonson&quot;</span><br><span class="line">psk=&quot;123456&quot;</span><br><span class="line">priority=1</span><br><span class="line">id_str=&quot;wifi-1&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>5 更改root帐户启动</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo passwd root</span><br><span class="line">sudo passwd --unlock root</span><br><span class="line">sudo nano /etc/ssh/sshd_config</span><br><span class="line">PermitRootLogin without-password 改为 PermitRootLogin yes</span><br></pre></td></tr></table></figure>
+
+<p>6 重启后就可以拔掉网线，用WIFI 进行SSH连结了</p>
+<h2 id="2-2-Web可视化管理界面"><a href="#2-2-Web可视化管理界面" class="headerlink" title="2.2 Web可视化管理界面"></a>2.2 Web可视化管理界面</h2><p>Debian-Pi-Aarch64 系统安装完成自带</p>
+<p>登录地址 https://你树莓派的IP地址:9090</p>
+<p>说明：请使用系统默认账户pi登录</p>
+<h2 id="2-3-CecOS-CaaS-容器云管理平台"><a href="#2-3-CecOS-CaaS-容器云管理平台" class="headerlink" title="2.3 CecOS CaaS 容器云管理平台"></a>2.3 CecOS CaaS 容器云管理平台</h2><p>Debian-Pi-Aarch64 系统安装完成自带</p>
+<p>登录地址 https://你树莓派的IP地址:8443</p>
+<p>说明：默认管理账户 admin , 默认密码：password 。请登录后立即修改默认密码！</p>
+<h2 id="2-4-宝塔面板"><a href="#2-4-宝塔面板" class="headerlink" title="2.4 宝塔面板"></a>2.4 宝塔面板</h2><p>宝塔Linux面板是提升运维效率的服务器管理软件，支持一键LAMP/LNMP/集群/监控/网站/FTP/数据库/JAVA等100多项服务器管理功能。</p>
+<p>使用脚本一键安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O install.sh http://download.bt.cn/install/install-ubuntu_6.0.sh &amp;&amp; bash install.sh </span><br></pre></td></tr></table></figure>
+
+<p>装好后会给出访问地址和账号密码，可以在浏览器中输入 localhost:8888 来访问</p>
+<h2 id="2-5-宝塔安装常用应用"><a href="#2-5-宝塔安装常用应用" class="headerlink" title="2.5 宝塔安装常用应用"></a>2.5 宝塔安装常用应用</h2><p>登录宝塔面板，在软件商店可以安装一些基础应用</p>
+<h2 id><a href="#" class="headerlink" title></a><img src="/2021/03/25/raspi/how-to-use-raspberry/image-20210327000301428.png" alt="image-20210327000301428"></h2><h1 id="3-扩展应用"><a href="#3-扩展应用" class="headerlink" title="3 扩展应用"></a>3 扩展应用</h1><h2 id="3-1-安装jenkins"><a href="#3-1-安装jenkins" class="headerlink" title="3.1 安装jenkins"></a>3.1 安装jenkins</h2><h3 id="3-1-1-安装JAVA-JDK"><a href="#3-1-1-安装JAVA-JDK" class="headerlink" title="3.1.1 安装JAVA JDK"></a>3.1.1 安装JAVA JDK</h3><p>首先安装JAVA JDK 1.8</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">download latest war wget https://github.com/frekele/oracle-java/releases/</span><br><span class="line">tar zxvf jdk-8u212-linux-arm32-vfp-hflt.tar.gz </span><br><span class="line">sudo mkdir /usr/share/java</span><br><span class="line">sudo mv jdk1.8.0_212/ /usr/share/java/</span><br><span class="line">sudo update-alternatives --install /usr/bin/java java /usr/share/java/jdk1.8.0_212/bin/java 1000</span><br><span class="line">sudo update-alternatives --install /usr/bin/javac javac /usr/share/java/jdk1.8.0_212/bin/javac 1000</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-1-2-安装Jenkins-war"><a href="#3-1-2-安装Jenkins-war" class="headerlink" title="3.1.2 安装Jenkins war"></a>3.1.2 安装Jenkins war</h3><p>然后将最新的<a target="_blank" rel="noopener" href="https://www.jenkins.io/download/">jenkins war</a>包上传到主机/home/jenkins目录下，启动：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">java -jar jenkins.war </span><br><span class="line">java -jar jenkins.war --httpPort=9001  <span class="comment">#指定端口</span></span><br></pre></td></tr></table></figure>
+
+<p>(如果telnet端口访问不了用宝塔开端口)</p>
+<h3 id="3-1-3-配置"><a href="#3-1-3-配置" class="headerlink" title="3.1.3 配置"></a>3.1.3 配置</h3><p>1 登录</p>
+<p>浏览器打开 <a target="_blank" rel="noopener" href="http://localhost:9001/">http://localhost:9001</a> 等待Jenkins主页加载</p>
+<p>登录首页需要密码，查看登录用户密码路径为: /root/.jenkkins/secrets/initialAdminPassword</p>
+<p>使用官网的插件下载地址极慢，所以需要更新镜像地址：</p>
+<p>打开 /root/.jenkkins/hudson.model.UpdateCenter.xml 更改插件更新地址为：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">url</span>&gt;</span>https://mirrors.tuna.tsinghua.edu.cn/jenkins/updates/update-center.json<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>2 插件安装</p>
+<p>如果因为网络原因需要手动安装插件.首先官网下载插件或者用之前备份的插件 all_plugin.zip copy 到 plugin下,并解压。</p>
+<p>3 JOB 迁移恢复</p>
+<p>将其它Jenkins备份的JOB 复制到/root/.jenkins/jobs/。</p>
+<p>4 帐户</p>
+<p>新建GIT帐户XXXXX</p>
+<p>5 安装Python依赖 </p>
+<p>安装Python依赖，用于运行常用Python脚本</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">apt-get install python3-pip</span><br><span class="line">pip3 install pymysql</span><br><span class="line">pip3 install urlopen</span><br><span class="line">pip3 install requests</span><br><span class="line">pip3 install BeautifulSoup</span><br></pre></td></tr></table></figure>
+
+<p>6 备份</p>
+<p>  宝塔建定时备份任务 root/.jenkins JOBS 任务 到 /www/backup/path</p>
+<p>  宝塔建定时备份任务 root/.jenkins JOBS 任务 到 /www/backup/path</p>
+<h3 id="3-1-4-服务操作命令"><a href="#3-1-4-服务操作命令" class="headerlink" title="3.1.4 服务操作命令"></a>3.1.4 服务操作命令</h3><p>1 开机自动启动</p>
+<p>​    linux home/jenkins目录下,新建jenkins.sh 内容:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">pid=`ps -ef | grep jenkins.war | grep -v <span class="string">&#x27;grep&#x27;</span>| awk <span class="string">&#x27;&#123;print $2&#125;&#x27;</span>| wc -l`</span><br><span class="line"><span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$1</span>&quot;</span> = <span class="string">&quot;start&quot;</span> ];<span class="keyword">then</span></span><br><span class="line"> <span class="keyword">if</span> [ <span class="variable">$pid</span> -gt 0 ];<span class="keyword">then</span></span><br><span class="line">   <span class="built_in">echo</span> <span class="string">&#x27;jenkins is running...&#x27;</span></span><br><span class="line"> <span class="keyword">else</span></span><br><span class="line">   <span class="comment">### java启动服务 配置java安装根路径,和启动war包存的根路径</span></span><br><span class="line">   nohup java -jar /home/jenkins/jenkins.war --httpPort=9001  2&gt;&amp;1 &amp;</span><br><span class="line"> <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">elif</span> [ <span class="string">&quot;<span class="variable">$1</span>&quot;</span> = <span class="string">&quot;stop&quot;</span> ];<span class="keyword">then</span></span><br><span class="line"> <span class="built_in">exec</span> ps -ef | grep jenkins | grep -v grep | awk <span class="string">&#x27;&#123;print $2&#125;&#x27;</span>| xargs <span class="built_in">kill</span> -9</span><br><span class="line"> <span class="built_in">echo</span> <span class="string">&#x27;jenkins is stop..&#x27;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line"> <span class="built_in">echo</span> <span class="string">&quot;Please input like this:&quot;</span>./jenkins.sh start<span class="string">&quot; or &quot;</span>./jenkins stop<span class="string">&quot;&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+
+<p>2 启动和停止命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 jenkins.sh</span><br><span class="line">jenkins jenkins.sh start</span><br><span class="line">jenkins jenkins.sh stop</span><br></pre></td></tr></table></figure>
+
+<p>3 注册为服务</p>
+<p>开机启动服务 到 /lib/systemd/system 服务注册目录下创建jenkins.service</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Jenkins</span><br><span class="line">After=network.target</span><br><span class="line"> </span><br><span class="line">[Service]</span><br><span class="line">Type=forking</span><br><span class="line">ExecStart=/bin/bash /home/jenkins/jenkins.sh start</span><br><span class="line">ExecReload=</span><br><span class="line">ExecStop=/bin/bash /home/jenkins/jenkins.sh stop</span><br><span class="line">PrivateTmp=<span class="literal">true</span></span><br><span class="line"> </span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+<p>建好服务后,执行一下命令刷新配置 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br></pre></td></tr></table></figure>
+
+<p>启动脚本 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start jenkins.service</span><br></pre></td></tr></table></figure>
+
+<p>查看启动脚本状态是否启用成功</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status jenkins.service</span><br></pre></td></tr></table></figure>
+
+<p>设置开机启动 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> jenkins.service</span><br></pre></td></tr></table></figure>
+
+<p>停止服务命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop jenkins.service</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-2-安装wordpress"><a href="#3-2-安装wordpress" class="headerlink" title="3.2 安装wordpress"></a>3.2 安装wordpress</h2><p>wordpress是一款使用PHP开发的网站程序，可以用来做个人网站博客、商业网站，是全球使用人数最多的网站应用。</p>
+<p>在宝塔面板上安装wordpress非常简单， 在软件商店找到一键部署安装应用列表，选择wordpress一键部署功能，按照提示一路安装下去即可。</p>
+<p><img src="/2021/03/25/raspi/how-to-use-raspberry/image-20210327001149753.png" alt="image-20210327001149753"></p>
+<h2 id="3-3-安装花生壳"><a href="#3-3-安装花生壳" class="headerlink" title="3.3 安装花生壳"></a>3.3 安装花生壳</h2><p>使用<a target="_blank" rel="noopener" href="http://service.oray.com/question/2680.html">花生壳</a> 进行内网穿透，使得可以在互联网外访问树莓派上的服务。</p>
+<p>也有类似的内网穿透工具<a target="_blank" rel="noopener" href="https://www.natfrp.com/user/">樱花内网穿透</a>。</p>
+<h3 id="3-3-1-安装与使用"><a href="#3-3-1-安装与使用" class="headerlink" title="3.3.1 安装与使用"></a>3.3.1 安装与使用</h3><p><strong>注意：花生壳安装步骤都需要在管理员（Root）权限下运行。</strong></p>
+<p>1.安装</p>
+<p>在树莓派上下载安装包后，通过cd命令进入对应下载目录，输入下面的命令进行安装：<br><strong>dpkg -i ph<a target="_blank" rel="noopener" href="https://hsk.oray.com/">ddns</a>_rapi_3.0.3.armhf.deb</strong>（phddns_rapi_3.0.3.armhf.deb为安装包名称）</p>
+<p>安装成功后，将显示此树莓派的SN码、默认密码以及<a target="_blank" rel="noopener" href="https://sunlogin.oray.com/personal/">远程</a>管理地址。<br><img src="/2021/03/25/raspi/how-to-use-raspberry/20170222174817450.jpg" alt="img"></p>
+<p>2.操作</p>
+<p>①树莓派<strong>3.0.3</strong>版本命令格式为：<strong>systemctl start phddns</strong><br>其中start为命令操作，<strong>stop</strong>（停止）|<strong>restart</strong>（重启） |<strong>status</strong>（状态）|<strong>version</strong>（版本）|<strong>reset</strong>（重置）同理<br>树莓派<strong>3.0.0-3.0.2</strong>版本操作命令相同，具体如下：<br>卸载：<strong>dpkg -r phddns</strong><br><img src="/2021/03/25/raspi/how-to-use-raspberry/20170222173442440.jpg" alt="img"></p>
+<p>②输入phddns回车后，可以看到扩展的功能：<br><strong>phddns start</strong>（启动）| <strong>stop</strong>（停止）| <strong>restart</strong>（重启）<br><img src="/2021/03/25/raspi/how-to-use-raspberry/20170222173830443.jpg" alt="img"></p>
+<p>③<strong>phddns status</strong>（状态）| <strong>version</strong>（版本）| <strong>reset</strong>（重置）<br><img src="/2021/03/25/raspi/how-to-use-raspberry/20170222174833450.jpg" alt="img"></p>
+<p>④花生壳日志文件存放路况：**/var/log/phddns**<br><img src="/2021/03/25/raspi/how-to-use-raspberry/20170222173926444.jpg" alt="img"></p>
+<h3 id="3-3-2-配置花生壳"><a href="#3-3-2-配置花生壳" class="headerlink" title="3.3.2 配置花生壳"></a>3.3.2 配置花生壳</h3><p>1.浏览器输入远程管理地址<a target="_blank" rel="noopener" href="http://b.oray.com/">b.oray.com</a>进入花生壳远程管理页面，输入安装花生壳时生成的SN码及默认密码admin进入；<br><img src="/2021/03/25/raspi/how-to-use-raspberry/202012111039415422.png" alt="img"></p>
+<p>2.首次登录，需要通过扫码或者输入密码的方式进行激活和授权操作，两种方法任选一种；<br><img src="/2021/03/25/raspi/how-to-use-raspberry/202012111042566653.png" alt="img"></p>
+<p>3.注意：如果扫码或者输入密码进行激活的帐户本身并未开通内网穿透功能，只需要按照提示免费激活后，即可使用内网穿透功能；<br><img src="/2021/03/25/raspi/how-to-use-raspberry/202012111040305833.png" alt="img"></p>
+<p>4.如果想要使用其他Oray帐户的功能，可以点击右上角的“切换帐号”，使用其他帐号完成登录后即可使用的更换帐户。<br><img src="/2021/03/25/raspi/how-to-use-raspberry/202012111043466105.png" alt="img"></p>
+<h2 id="3-4-部署Python-Django网站系统"><a href="#3-4-部署Python-Django网站系统" class="headerlink" title="3.4 部署Python Django网站系统"></a>3.4 部署Python Django网站系统</h2><p>同linux下部署python django，详细见另一文章介绍:<a href="/2021/03/26/python/deploy-django-admin-simpleui/">Django SimpleUI管理系统安装及部署</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/raspberry/" rel="tag"># raspberry</a>
+              <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" rel="tag"># 树莓派</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/03/23/web/how-to-test-web-speed/" rel="prev" title="如何检测网页打开速度">
+                  <i class="fa fa-chevron-left"></i> 如何检测网页打开速度
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/03/27/python/deploy-django-admin-simpleui/" rel="next" title="Django SimpleUI管理系统安装及部署">
+                  Django SimpleUI管理系统安装及部署 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-bell fa-fw"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Learn365</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,872 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Keep Learning</title>
+    <url>/2021/06/07/keep_learning/</url>
+    <content><![CDATA[<h3 id="1-目的"><a href="#1-目的" class="headerlink" title="1 目的"></a>1 目的</h3><p>Tester</p>
+<h3 id="2-步骤"><a href="#2-步骤" class="headerlink" title="2 步骤"></a>2 步骤</h3><h3 id="3-总结"><a href="#3-总结" class="headerlink" title="3 总结"></a>3 总结</h3>]]></content>
+      <categories>
+        <category>devops</category>
+      </categories>
+      <tags>
+        <tag>devops</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Jeknins API 调用</title>
+    <url>/2021/04/18/devops/Jenkins-api/</url>
+    <content><![CDATA[<ol>
+<li><p>创建用户API Token </p>
+<p><img src="/2021/04/18/devops/Jenkins-api/image-20210404225621042.png" alt="image-20210404225621042"></p>
+</li>
+<li><p>Jenkins 系统设置中设置未授权用户可以读访问</p>
+<p><img src="http://image.bubuko.com/info/201708/20180111002238023173.png" alt="技术分享"></p>
+</li>
+</ol>
+<p><img src="/2021/04/18/devops/Jenkins-api/20180111002238025126.png" alt="技术分享"></p>
+<ol start="3">
+<li><p>调用视图View接口返回该视图下所有JOBS</p>
+<p><a href="http://192.168.31.85:9001/view/test/api/json?tree=jobs%5Bname,url,inQueue,color,lastBuild%5Bnumber,building,duration,estimatedDuration,result,url%5D%5D">http://192.168.31.85:9001/view/test/api/json?tree=jobs[name,url,inQueue,color,lastBuild[number,building,duration,estimatedDuration,result,url]]</a></p>
+</li>
+</ol>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">&quot;_class&quot;</span>: <span class="string">&quot;hudson.model.ListView&quot;</span>,</span><br><span class="line">	<span class="attr">&quot;jobs&quot;</span>: [</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="attr">&quot;_class&quot;</span>: <span class="string">&quot;hudson.model.FreeStyleProject&quot;</span>,</span><br><span class="line">			<span class="attr">&quot;name&quot;</span>: <span class="string">&quot;News-Spider&quot;</span>,</span><br><span class="line">			<span class="attr">&quot;url&quot;</span>: <span class="string">&quot;http://192.168.31.85:9001/job/News-Spider/&quot;</span>,</span><br><span class="line">			<span class="attr">&quot;color&quot;</span>: <span class="string">&quot;blue&quot;</span>,</span><br><span class="line">			<span class="attr">&quot;inQueue&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">			<span class="attr">&quot;lastBuild&quot;</span>: &#123;</span><br><span class="line">				<span class="attr">&quot;_class&quot;</span>: <span class="string">&quot;hudson.model.FreeStyleBuild&quot;</span>,</span><br><span class="line">				<span class="attr">&quot;building&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">				<span class="attr">&quot;duration&quot;</span>: <span class="number">19222</span>,</span><br><span class="line">				<span class="attr">&quot;estimatedDuration&quot;</span>: <span class="number">24315</span>,</span><br><span class="line">				<span class="attr">&quot;number&quot;</span>: <span class="number">193</span>,</span><br><span class="line">				<span class="attr">&quot;result&quot;</span>: <span class="string">&quot;SUCCESS&quot;</span>,</span><br><span class="line">				<span class="attr">&quot;url&quot;</span>: <span class="string">&quot;http://192.168.31.85:9001/job/News-Spider/193/&quot;</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="attr">&quot;_class&quot;</span>: <span class="string">&quot;hudson.model.FreeStyleProject&quot;</span>,</span><br><span class="line">			<span class="attr">&quot;name&quot;</span>: <span class="string">&quot;Zhihu-Notify&quot;</span>,</span><br><span class="line">			<span class="attr">&quot;url&quot;</span>: <span class="string">&quot;http://192.168.31.85:9001/job/Zhihu-Notify/&quot;</span>,</span><br><span class="line">			<span class="attr">&quot;color&quot;</span>: <span class="string">&quot;blue&quot;</span>,</span><br><span class="line">			<span class="attr">&quot;inQueue&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">			<span class="attr">&quot;lastBuild&quot;</span>: &#123;</span><br><span class="line">				<span class="attr">&quot;_class&quot;</span>: <span class="string">&quot;hudson.model.FreeStyleBuild&quot;</span>,</span><br><span class="line">				<span class="attr">&quot;building&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">				<span class="attr">&quot;duration&quot;</span>: <span class="number">2446</span>,</span><br><span class="line">				<span class="attr">&quot;estimatedDuration&quot;</span>: <span class="number">2765</span>,</span><br><span class="line">				<span class="attr">&quot;number&quot;</span>: <span class="number">904</span>,</span><br><span class="line">				<span class="attr">&quot;result&quot;</span>: <span class="string">&quot;SUCCESS&quot;</span>,</span><br><span class="line">				<span class="attr">&quot;url&quot;</span>: <span class="string">&quot;http://192.168.31.85:9001/job/Zhihu-Notify/904/&quot;</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="attr">&quot;_class&quot;</span>: <span class="string">&quot;hudson.model.FreeStyleProject&quot;</span>,</span><br><span class="line">			<span class="attr">&quot;name&quot;</span>: <span class="string">&quot;Zhihu-Spider&quot;</span>,</span><br><span class="line">			<span class="attr">&quot;url&quot;</span>: <span class="string">&quot;http://192.168.31.85:9001/job/Zhihu-Spider/&quot;</span>,</span><br><span class="line">			<span class="attr">&quot;color&quot;</span>: <span class="string">&quot;blue&quot;</span>,</span><br><span class="line">			<span class="attr">&quot;inQueue&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">			<span class="attr">&quot;lastBuild&quot;</span>: &#123;</span><br><span class="line">				<span class="attr">&quot;_class&quot;</span>: <span class="string">&quot;hudson.model.FreeStyleBuild&quot;</span>,</span><br><span class="line">				<span class="attr">&quot;building&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">				<span class="attr">&quot;duration&quot;</span>: <span class="number">126009</span>,</span><br><span class="line">				<span class="attr">&quot;estimatedDuration&quot;</span>: <span class="number">132518</span>,</span><br><span class="line">				<span class="attr">&quot;number&quot;</span>: <span class="number">3613</span>,</span><br><span class="line">				<span class="attr">&quot;result&quot;</span>: <span class="string">&quot;SUCCESS&quot;</span>,</span><br><span class="line">				<span class="attr">&quot;url&quot;</span>: <span class="string">&quot;http://192.168.31.85:9001/job/Zhihu-Spider/3613/&quot;</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>devops</category>
+      </categories>
+      <tags>
+        <tag>Jenkins</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>gitee webhook 触发Jenkins JOB</title>
+    <url>/2021/04/18/devops/gitee-webhook/</url>
+    <content><![CDATA[<p>gitee webhook 触发Jenkins JOB </p>
+<ol>
+<li><p>在Jenkins 中安装Generic webhook Trigger插件</p>
+</li>
+<li><p>然后在任务构建触发器中启用Generic webhook Trigger,并设置一个Token,这时webhook的URL组成形式为：</p>
+</li>
+</ol>
+<p><a href="http://jenkinsurl/generic-webhook-trigger/invoke?token=123456">http://jenkinsUrl/generic-webhook-trigger/invoke?token=123456</a></p>
+<p><img src="/2021/04/18/devops/gitee-webhook/image-20210417004117065.png" alt="image-20210417004117065"></p>
+<ol start="3">
+<li>在gitee 仓库管理中添加webhooks</li>
+</ol>
+<p><img src="/2021/04/18/devops/gitee-webhook/image-20210417004012534.png" alt="image-20210417004012534"></p>
+<ol start="4">
+<li>配置完成后，Gitee代码提交即可自动触发Jenkins Build Job</li>
+</ol>
+]]></content>
+      <categories>
+        <category>devops</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>DevOps-版本控制系统-GitLab部署</title>
+    <url>/2021/03/28/devops/install-gitlab/</url>
+    <content><![CDATA[<p><img src="/2021/03/28/devops/install-gitlab/image-20210327223917830.png" alt="image-20210327223917830"></p>
+<h3 id="1-使⽤RPM包部署"><a href="#1-使⽤RPM包部署" class="headerlink" title="1 使⽤RPM包部署"></a>1 使⽤RPM包部署</h3><p>这⾥使⽤的系统是CentOS8， 清华源：mirrors.tuna.tsinghua.edu.cn/gitlab-ce/</p>
+<p>下载软件包 </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el8/gitlab-ce-13.7.0-ce.0.el8.x86_64.rpm</span><br></pre></td></tr></table></figure>
+
+<p>安装</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm -ivh gitlab-ce-13.7.0-ce.0.el8.x86_64.rpm</span><br></pre></td></tr></table></figure>
+
+<p>⽇志输出</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">warning: gitlab-ce-13.7.0-ce.0.el8.x86_64.rpm: Header V4 RSA/SHA256 Signature, </span><br><span class="line">key ID f27eab47: NOKEY</span><br><span class="line">Verifying...                          <span class="comment">################################# [100%]</span></span><br><span class="line">Preparing...                          <span class="comment">################################# [100%]</span></span><br><span class="line">Updating / installing...</span><br><span class="line">   1:gitlab-ce-13.7.0-ce.0.el8        <span class="comment">################################# [100%]</span></span><br><span class="line">It looks like GitLab has not been configured yet; skipping the upgrade script.</span><br><span class="line"> </span><br><span class="line">       *.                  *.</span><br><span class="line">      ***                 ***</span><br><span class="line">     *****               *****</span><br><span class="line">    .******             *******</span><br><span class="line">    ********            ********</span><br><span class="line">   ,,,,,,,,,***********,,,,,,,,,</span><br><span class="line">  ,,,,,,,,,,,*********,,,,,,,,,,,</span><br><span class="line">  .,,,,,,,,,,,*******,,,,,,,,,,,,</span><br><span class="line">      ,,,,,,,,,*****,,,,,,,,,.</span><br><span class="line">         ,,,,,,,****,,,,,,</span><br><span class="line">            .,,,***,,,,</span><br><span class="line">                ,*,.</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">     _______ __  __          __</span><br><span class="line">    / ____(_) /_/ /   ____ _/ /_</span><br><span class="line">   / / __/ / __/ /   / __ `/ __ \</span><br><span class="line">  / /_/ / / /_/ /___/ /_/ / /_/ /</span><br><span class="line">  \____/_/\__/_____/\__,_/_.___/</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">Thank you <span class="keyword">for</span> installing GitLab!</span><br><span class="line">GitLab was unable to detect a valid hostname <span class="keyword">for</span> your instance.</span><br><span class="line">Please configure a URL <span class="keyword">for</span> your GitLab instance by setting `external_url`</span><br><span class="line">configuration <span class="keyword">in</span> /etc/gitlab/gitlab.rb file.</span><br><span class="line">Then, you can start your GitLab instance by running the following <span class="built_in">command</span>:</span><br><span class="line">  sudo gitlab-ctl reconfigure</span><br><span class="line"> </span><br><span class="line">For a comprehensive list of configuration options please see the Omnibus GitLab </span><br><span class="line">readme</span><br><span class="line">https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/README.md</span><br><span class="line"> </span><br><span class="line">Help us improve the installation experience, <span class="built_in">let</span> us know how we did with a 1 </span><br><span class="line">minute survey:</span><br><span class="line">https://gitlab.fra1.qualtrics.com/jfe/form/SV_6kVqZANThUQ1bZb?</span><br><span class="line">installation=omnibus&amp;release=13-7</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-配置"><a href="#2-配置" class="headerlink" title="2 配置"></a>2 配置</h3><p>安装完成后可以发现以下信息，需要修改gitlab.rb配置⽂件。</p>
+<blockquote>
+<p>GitLab was unable to detect a valid hostname for your instance. Please configure a URL for<br>your GitLab instance by setting  external_url configuration in /etc/gitlab/gitlab.rb file. Then,<br>you can start your GitLab instance by running the following command: sudo gitlab-ctl<br>reconfigure</p>
+</blockquote>
+<p>编辑  /etc/gitlab/gitlab.rb  可以看到默认的域名配置。如果是学习使⽤则可以继续使⽤该域名，不⽤再做其他配置。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">external_url <span class="string">&#x27;http://gitlab.example.com&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果是需要修改该域名，则需要这样做：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">## 修改gitlab.rb</span></span><br><span class="line">external_url <span class="string">&#x27;http://gitlab.devops.com&#x27;</span></span><br><span class="line"><span class="comment">## 重新配置</span></span><br><span class="line">gitlab-ctl reconfigure</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-服务运⾏控制"><a href="#3-服务运⾏控制" class="headerlink" title="3 服务运⾏控制"></a>3 服务运⾏控制</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">## 启动服务</span></span><br><span class="line">gitlab-ctl start</span><br><span class="line"><span class="comment">## 重启服务</span></span><br><span class="line">gitlab-ctl restart </span><br><span class="line"><span class="comment">## 查看状态</span></span><br><span class="line">gitlab-ctl status </span><br><span class="line"><span class="comment">## 停⽌</span></span><br><span class="line">gitlab-ctl stop</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-访问测试"><a href="#4-访问测试" class="headerlink" title="4 访问测试"></a>4 访问测试</h3><p>由于使⽤的是gitlab.devops.com  这个域名，需要在dns或者本地hosts中添加该解析记录。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vi /etc/hosts</span><br><span class="line">192.168.1.200 gitlab.devops.com</span><br></pre></td></tr></table></figure>
+
+<p>浏览器访问<a href="http://gitlab.devops.com/">http://gitlab.devops.com/</a> , 设置⽤户密码。默认⽤户root 。这⾥设置的密码是devops1234 。</p>
+<p>能够正常进⼊⾸⻚即可，安装完成。</p>
+<p><img src="/2021/03/28/devops/install-gitlab/image-20210327224441204.png" alt="image-20210327224441204"></p>
+<h3 id="5-默认端口修改"><a href="#5-默认端口修改" class="headerlink" title="5 默认端口修改"></a>5 默认端口修改</h3><p>由于默认gitlab使用80端口，所以，我们需要修改gitlab的默认端口。</p>
+<p>修改 /etc/gitlab/gitlab.rb 文件如下，然后执行重新配置，重启命令后完成。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gitlab-ctl reconfigure  //让配置生效，重新执行此命令时间也比较长</span><br><span class="line"></span><br><span class="line">gitlab-ctl restart</span><br></pre></td></tr></table></figure>
+
+<p>端口要用9090以后的最好，否则不生效</p>
+<p>默认情况下：unicorn会占用8080端口，nginx会占用80端口。改完之后，就可以通过nginx[‘listen_port’] 在浏览器进行访问了。</p>
+<p>内部8080端口也不再被占用了。</p>
+<p><img src="/2021/03/28/devops/install-gitlab/20190102192016176.png" alt="在这里插入图片描述"></p>
+<p>这样修改了默认端口80后，在idea中获取代码时，要在路径后面加上修改的端口号才可以访问到代码</p>
+<p>以上是按照gitlab的全过程。</p>
+]]></content>
+      <categories>
+        <category>devops</category>
+      </categories>
+      <tags>
+        <tag>DevOps</tag>
+        <tag>GitLab</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>linux系统安装Jenkins</title>
+    <url>/2021/03/18/devops/install-jenkins-on-linux/</url>
+    <content><![CDATA[<h3 id="1-Jenkins-是什么"><a href="#1-Jenkins-是什么" class="headerlink" title="1 Jenkins 是什么"></a>1 Jenkins 是什么</h3><p>​    Jenkins是一个开源的、提供友好操作界面的持续集成(CI)工具，起源于Hudson（Hudson是商用的），主要用于持续、自动的构建/测试软件项目、监控外部任务的运行（这个比较抽象，暂且写上，不做解释）。Jenkins用Java语言编写，可在Tomcat等流行的servlet容器中运行，也可独立运行。通常与版本管理工具(SCM)、构建工具结合使用。常用的版本控制工具有SVN、GIT，构建工具有Maven、Ant、Gradle。</p>
+<p><img src="/2021/03/18/devops/install-jenkins-on-linux/image-20210327121044368.png" alt="image-20210327121044368"></p>
+<h3 id="2-Linux系统安装Jenkins"><a href="#2-Linux系统安装Jenkins" class="headerlink" title="2 Linux系统安装Jenkins"></a>2 Linux系统安装Jenkins</h3><h4 id="2-1-安装JAVA-JDK"><a href="#2-1-安装JAVA-JDK" class="headerlink" title="2.1 安装JAVA JDK"></a>2.1 安装JAVA JDK</h4><p>首先安装JAVA JDK 1.8</p>
+  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">download latest war wget https://github.com/frekele/oracle-java/releases/</span><br><span class="line">tar zxvf jdk-8u212-linux-x64.tar.gz</span><br><span class="line">sudo mkdir /usr/share/java</span><br><span class="line">sudo mv jdk1.8.0_212/ /usr/share/java/</span><br><span class="line">sudo update-alternatives --install /usr/bin/java java /usr/share/java/jdk1.8.0_212/bin/java 1000</span><br><span class="line">sudo update-alternatives --install /usr/bin/javac javac /usr/share/java/jdk1.8.0_212/bin/javac 1000</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-2-安装maven"><a href="#2-2-安装maven" class="headerlink" title="2.2 安装maven"></a>2.2 安装maven</h4><p><strong>第一步：下载</strong></p>
+<p>wget <a href="http://mirrors.hust.edu.cn/apache/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.tar.gz">http://mirrors.hust.edu.cn/apache/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.tar.gz</a></p>
+<p><strong>第二步：解压</strong></p>
+<p>在/usr/local/software目录下解压</p>
+<p>tar -zxvf apache-maven-3.6.0-bin.tar.gz</p>
+<p><strong>第三步：修改/etc/profile</strong></p>
+<p>vim /etc/profile </p>
+<p>在文件末尾追加如下内容：</p>
+<p>export M2_HOME=/usr/local/software/apache-maven-3.6.0export PATH=$PATH:$M2_HOME/bin</p>
+<p><strong>第四步：使配置生效</strong></p>
+<p>source /etc/profile </p>
+<p><strong>第五步：查看maven版本</strong></p>
+<p>mvn -v</p>
+<h4 id="2-3-安装jenkins"><a href="#2-3-安装jenkins" class="headerlink" title="2.3 安装jenkins"></a>2.3 安装jenkins</h4><p><strong>第一步：下载</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo</span><br></pre></td></tr></table></figure>
+
+<p><strong>第二步：安装</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key</span><br><span class="line">yum install jenkins</span><br></pre></td></tr></table></figure>
+
+<p><strong>第三步：配置</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/sysconfig/jenkins</span><br></pre></td></tr></table></figure>
+
+<p>启动端口，默认为8080</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">JENKINS_PORT=<span class="string">&quot;8080&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>修改jenkins目录</p>
+<p>将JENKINS_HOME=”/var/lib/jenkins” 改成JENKINS_HOME=”/data/jenkins”</p>
+<p>我这里修改jenkins目录到/data，创建对应的/data目录</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir /data cp -a /var/lib/jenkins  /data/</span><br></pre></td></tr></table></figure>
+
+<p>用户修改为root</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">JENKINS_USER=<span class="string">&quot;root&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>修改目录权限</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">chown -R root:root /data/jenkins chown -R root:root /var/cache/jenkins</span><br><span class="line">chown -R root:root /var/<span class="built_in">log</span>/jenkins</span><br></pre></td></tr></table></figure>
+
+<p><strong>第四步：jdk建立软链接</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ln -s /usr/<span class="built_in">local</span>/software/jdk1.8.0_131/bin/java /usr/bin/java</span><br></pre></td></tr></table></figure>
+
+<p><strong>第五步：启动</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl start jenkins</span><br></pre></td></tr></table></figure>
+
+<p>修改防火墙权限：使得外网可以访问(8080为默认端口，在实际中选择启动端口)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=8080/tcp --permanentfirewall-cmd --zone=public --add-service=http --permanentfirewall-cmd --reload</span><br></pre></td></tr></table></figure>
+
+<p><strong>第六步：安装插件</strong></p>
+<p>1、访问<a href="http://ip:8080/%EF%BC%8C%E5%87%BA%E7%8E%B0%E5%A6%82%E4%B8%8B%E7%94%BB%E9%9D%A2">http://ip:8080/，出现如下画面</a></p>
+<p><img src="/2021/03/18/devops/install-jenkins-on-linux/0eab59c40fce4789802031c6d3002771.png" alt="img"></p>
+<p>2、查看初始化密码，输入，点击继续</p>
+<p>[root@localhost bin]# cat /data/jenkins/secrets/initialAdminPassword904951c87bcb47ff947b186b30677ad9</p>
+<p>3、点击安装推荐的插件</p>
+<p>若出现安装失败的插件，可点击重试，安装成功后，出现如下图</p>
+<p><img src="/2021/03/18/devops/install-jenkins-on-linux/12127f47989449e3a091c5f33581359f.png" alt="img"></p>
+<p>创建第一个管理员用户</p>
+<p><img src="/2021/03/18/devops/install-jenkins-on-linux/b2c854d67a0c4b9fa8a35092c25720a1.png" alt="img"></p>
+<p>保存并完成实例配置。</p>
+<h3 id="3-rpm包部署Jenkins"><a href="#3-rpm包部署Jenkins" class="headerlink" title="3 rpm包部署Jenkins"></a>3 rpm包部署Jenkins</h3><p>普遍在centos系统部署Jenkins，可以下载jenkins的最新rpm包部署。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://mirrors.tuna.tsinghua.edu.cn/jenkins/redhat-stable/jenkins-2.235.2-1.1.noarch.rpm</span><br><span class="line">rpm -ivh jenkins-2.235.2-1.1.noarch.rpm</span><br><span class="line">systemctl start jenkinssystemctl <span class="built_in">enable</span> jenkins</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-宝塔面板安装Jenkins"><a href="#4-宝塔面板安装Jenkins" class="headerlink" title="4 宝塔面板安装Jenkins"></a>4 宝塔面板安装Jenkins</h3><p>除上上述安装Jenkins 方式，也可以通过宝塔面板安装Jenkins</p>
+<h4 id="4-1-安装宝塔面板"><a href="#4-1-安装宝塔面板" class="headerlink" title="4.1 安装宝塔面板"></a>4.1 安装宝塔面板</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install -y wget &amp;&amp; wget -O install.sh http://download.bt.cn/install/install_6.0.sh &amp;&amp; sh install.sh</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-2宝塔面板安装-Java项目管理器"><a href="#4-2宝塔面板安装-Java项目管理器" class="headerlink" title="4.2宝塔面板安装 Java项目管理器"></a>4.2宝塔面板安装 Java项目管理器</h4><p><img src="/2021/03/18/devops/install-jenkins-on-linux/86359be522964154ba4bf4ad950f299b.png" alt="img"></p>
+<p>点开Java项目管理器，在版本管理中安装tomcat8，这个版本安装的jdk是1.8版本的。</p>
+<h4 id="4-3下载war包"><a href="#4-3下载war包" class="headerlink" title="4.3下载war包"></a>4.3下载war包</h4><p>官网：<a href="https://jenkins.io/zh/">https://jenkins.io/zh/</a></p>
+<p>下载地址：<a href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">http://mirrors.jenkins.io/war-stable/latest/jenkins.war</a></p>
+<p>将war包放置于tomcat web目录下</p>
+<p><img src="/2021/03/18/devops/install-jenkins-on-linux/6739fa8547c241bd840bbbef670ab431.png" alt="img"></p>
+<h4 id="4-4-安装"><a href="#4-4-安装" class="headerlink" title="4.4  安装"></a>4.4  安装</h4><p>做好之后，我们可以直接用 (你的ip或域名):8082/jenkins/这样的形式来访问安装，宝塔面板的java项目管理器中的tomcat7、8、9 的默认端口依次是8081、8082、8083。</p>
+<p>启动jenkins首页</p>
+<p><img src="/2021/03/18/devops/install-jenkins-on-linux/1ddee52cecfa4df9beca473d87752d9c.png" alt="img"></p>
+]]></content>
+      <categories>
+        <category>devops</category>
+      </categories>
+      <tags>
+        <tag>Jenkins</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Shell 常用语法</title>
+    <url>/2021/04/18/linux/Shell/</url>
+    <content><![CDATA[<ol>
+<li><p>常用命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ls</span><br><span class="line">mkdir -p</span><br><span class="line">mv</span><br><span class="line">cp</span><br><span class="line"><span class="built_in">pwd</span></span><br><span class="line">rm -rf</span><br><span class="line">cat</span><br><span class="line"><span class="built_in">echo</span></span><br></pre></td></tr></table></figure></li>
+<li><p>查看磁盘空间</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">df -h</span><br></pre></td></tr></table></figure></li>
+<li><p>查看目录空间</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">du -sh</span><br><span class="line">du -h –max-depth=1 *，可以查看当前目录下各文件、文件夹的大小</span><br></pre></td></tr></table></figure></li>
+<li><p>查看cpu内存等资源</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ps -aux | grep </span><br><span class="line">top</span><br><span class="line">free -h</span><br></pre></td></tr></table></figure>
+<p>M按照内存排序</p>
+</li>
+<li><p>网络</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mtr -r 202.108.33.94</span><br></pre></td></tr></table></figure></li>
+<li><p>查看系统版本</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">uname -a</span><br><span class="line">cat /proc/version</span><br><span class="line">lsb_release -a</span><br></pre></td></tr></table></figure></li>
+<li><p>文件插入内容</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;&#x27;</span>&gt; file.txt</span><br></pre></td></tr></table></figure></li>
+<li><p>文件替换字符串</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#替换一行中的某部分格式：</span></span><br><span class="line">sed <span class="string">&#x27;s/要替换的字符串/新的字符串/g&#x27;</span> <span class="comment">#（要替换的字符串可以用正则表达式）</span></span><br></pre></td></tr></table></figure></li>
+<li><p>more,less</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">回车键  向下移动一行；</span><br><span class="line">y 向上移动一行；</span><br><span class="line">空格键  向下滚动一屏；</span><br><span class="line">b 向上滚动一屏；</span><br><span class="line">d 向下滚动半屏；</span><br><span class="line">h less的帮助；</span><br><span class="line">g 跳到第一行；</span><br><span class="line">G 跳到最后一行</span><br><span class="line">q 退出less</span><br></pre></td></tr></table></figure></li>
+<li><p>查看日志 tail</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tail -f命令可以实时查看文件新增内容</span><br></pre></td></tr></table></figure></li>
+<li><p>vim文档编辑</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">i <span class="comment">#切换到输入模式，以输入字符。</span></span><br><span class="line">x <span class="comment">#删除当前光标所在处的字符。</span></span><br><span class="line">：<span class="comment">#切换到底线命令模式，以在最底一行输入命令</span></span><br><span class="line">esc <span class="comment">#输入模式</span></span><br><span class="line">：wq <span class="comment">#保存退出</span></span><br></pre></td></tr></table></figure></li>
+<li><p>压缩解压缩</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar -zxvf 压缩文件名.tar.gz <span class="comment">#解压</span></span><br><span class="line">tar -zcvf 压缩文件名.tar.gz <span class="comment">#压缩</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>linux平台查看CPU、内存消耗降序的进程列表</title>
+    <url>/2021/03/29/linux/check-linux/</url>
+    <content><![CDATA[<h3 id="1-CPU占用最多的前10个进程"><a href="#1-CPU占用最多的前10个进程" class="headerlink" title="1.CPU占用最多的前10个进程"></a>1.CPU占用最多的前10个进程</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ps auxw | head -1;ps auxw | sort -rn -k3 | head -10</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-内存消耗最多的前10个进程"><a href="#2-内存消耗最多的前10个进程" class="headerlink" title="2.内存消耗最多的前10个进程"></a>2.内存消耗最多的前10个进程</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ps auxw | head -1;ps auxw|sort -rn -k4 | head -10</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-虚拟内存使用最多的前10个进程"><a href="#3-虚拟内存使用最多的前10个进程" class="headerlink" title="3.虚拟内存使用最多的前10个进程"></a>3.虚拟内存使用最多的前10个进程</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ps auxw | head -1;ps auxw | sort -rn -k5 | head -10</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-其他命令及参数"><a href="#4-其他命令及参数" class="headerlink" title="4.其他命令及参数"></a>4.其他命令及参数</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ps auxw –sort=rss</span><br><span class="line">ps auxw –sort=%cpu</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-看看几个参数含义"><a href="#5-看看几个参数含义" class="headerlink" title="5.看看几个参数含义"></a>5.看看几个参数含义</h3><p>%MEM 进程的内存占用率<br>MAJFL is the major page fault count,<br>VSZ 进程所使用的虚存的大小<br>RSS 进程使用的驻留集大小或者是实际内存的大小(RSS is the “resident set size” meaning physical memory used)<br>TTY 与进程关联的终端（tty）</p>
+<p>串行端口终端（/dev/ttySn）<br>伪终端（/dev/pty/）<br>控制终端（/dev/tty）<br>控制台终端（/dev/ttyn, /dev/console）<br>虚拟终端(/dev/pts/n)</p>
+<p>STAT 检查的状态：进程状态使用字符表示的，如R（running正在运行或准备运行）、S（sleeping睡眠）、I（idle空闲）、Z (僵死)、D（不可中断的睡眠，通常是I/O）、P（等待交换页）、W（换出,表示当前页面不在内存）、N（低优先级任务）T(terminate终止)、W has no resident pages</p>
+<p>D不可中断 Uninterruptible sleep (usually IO)<br>R正在运行，或在队列中的进程<br>S处于休眠状态<br>T停止或被追踪<br>Z僵尸进程<br>W进入内存交换（从内核2.6开始无效）<br>X死掉的进程</p>
+<p>&lt;高优先级<br>N低优先级<br>L有些页被锁进内存<br>s包含子进程<br>+位于后台的进程组；<br>l多线程，克隆线程 multi-threaded (using CLONE_THREAD, like NPTL pthreads do)</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何使用git将开发代码同时提交多个仓库以达到冗余存储</title>
+    <url>/2021/04/18/devops/push-two-git/</url>
+    <content><![CDATA[<p>对于软件开发人员来说，源代码是一个产品至关重要的部分，在实际工作中，经常会将源代码上传到类似git或者svn这样的代码管理服务器上，以达到代码的管理以及备份，以免当开发人员电脑出现问题而带来的代码丢失的困扰。</p>
+<p>步骤：</p>
+<p>第一步，创建一个工程，并将工程进行git管理。 </p>
+<p>第二步，完成第二步以后，进入工程的跟目录，打开.git文件夹(是个隐藏文件夹)，编辑文件config，在已经存在的url下面添加其它仓库地址的url，如下：</p>
+<p><img src="/2021/04/18/devops/push-two-git/image-20210416233242348.png" alt="image-20210416233242348"></p>
+<p>第四步，保存config文件以后，在IDEA工具中提交代码，就会自动提交到添加的所有的url对应的仓库服务器上，如果其中一个url对应的仓库提交失败，所有的url对应的仓库提交都会失败。</p>
+]]></content>
+      <categories>
+        <category>devops</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>linux内存占用过高问题解决方法</title>
+    <url>/2021/04/02/linux/check-memeory/</url>
+    <content><![CDATA[<p>1.使用top查看内存的占用情况，然后键入”M”命令根据内存的占用情况降序排列(“P”是CPU占用情况降序排列)</p>
+<p>2.关闭掉不需要的进程，</p>
+<p>3.再使用top查看内存占用情况，发觉内存占用率已经降下来了，但是free-g却还有100G被占用（内存总共128G),vmstat发现是cache 占用了大量内存。</p>
+<p>4.使用 echo 1 &gt; /proc/sys/vm/drop_caches 释放缓存</p>
+<p>常用的释放缓存的命令如下</p>
+<p>To free pagecache:仅清除页面缓存（PageCache）</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> 1 &gt; /proc/sys/vm/drop_caches</span><br></pre></td></tr></table></figure>
+
+<p>To free dentries and inodes:清除目录项和inode</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> 2 &gt; /proc/sys/vm/drop_caches</span><br></pre></td></tr></table></figure>
+
+<p>To free pagecache, dentries and inodes:清除页面缓存，目录项和inode</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> 3 &gt; /proc/sys/vm/drop_caches</span><br></pre></td></tr></table></figure>
+
+<p>5.再使用free -g 查看内存使用情况，发现内存使用情况已经正常了。</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Django SimpleUI管理系统安装及部署</title>
+    <url>/2021/03/27/python/deploy-django-admin-simpleui/</url>
+    <content><![CDATA[<h3 id="1-前言"><a href="#1-前言" class="headerlink" title="1 前言"></a>1 前言</h3><p>Simple UI是一个基于Django Admin的现代化主题, 能够快速创建项目，支持风格切换，满足个性化需求；轻松操作页面管理，自定义按钮自由搭配，页面组合可视化操作更得心应手；开发调试一体化，集成运行环境零配置运行，开箱即用。<a href="https://github.com/newpanjing/simpleui">了解更多 &gt;</a></p>
+<h3 id="2-安装及运行"><a href="#2-安装及运行" class="headerlink" title="2 安装及运行"></a>2 安装及运行</h3><h4 id="2-1-Python环境变量配置"><a href="#2-1-Python环境变量配置" class="headerlink" title="2.1 Python环境变量配置"></a>2.1 Python环境变量配置</h4><p>安装python, 设置python及pip环境变量</p>
+<p>配置pip镜像源</p>
+<p>user目录下新建pip/pip.ini文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[global]</span><br><span class="line">index-url = https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line">[install]</span><br><span class="line">trusted-host=mirrors.aliyun.com	</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-2-安装Django"><a href="#2-2-安装Django" class="headerlink" title="2.2 安装Django"></a>2.2 安装Django</h4><p>安装命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip3 install Django -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
+
+<p>创建 Django 项目及应用</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">django-admin.py startproject projectname</span><br><span class="line">django-admin.py startapp appname</span><br></pre></td></tr></table></figure>
+
+<p>在MYSQL使用创建一个新DB</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create database runoob default charset=utf8;</span><br></pre></td></tr></table></figure>
+
+<p>项目settings文件配置数据库连接</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">DATABASES = &#123;</span><br><span class="line">     <span class="string">&#x27;default&#x27;</span>: &#123;</span><br><span class="line">            <span class="string">&#x27;ENGINE&#x27;</span>: <span class="string">&#x27;django.db.backends.mysql&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;NAME&#x27;</span>: <span class="string">&#x27;django&#x27;</span>,    <span class="comment">#你的数据库名称</span></span><br><span class="line">            <span class="string">&#x27;USER&#x27;</span>: <span class="string">&#x27;django&#x27;</span>,   <span class="comment">#你的数据库用户名</span></span><br><span class="line">            <span class="string">&#x27;PASSWORD&#x27;</span>: <span class="string">&#x27;123456&#x27;</span>, <span class="comment">#你的数据库密码</span></span><br><span class="line">            <span class="string">&#x27;HOST&#x27;</span>: <span class="string">&#x27;8.129.115.12&#x27;</span>, <span class="comment">#你的数据库主机，留空默认为localhost</span></span><br><span class="line">            <span class="string">&#x27;PORT&#x27;</span>: 3306, <span class="comment"># 端口</span></span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>创建表结构及超级用户</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python manage.py makemigrations  app01  <span class="comment"># 让 Django 知道我们在我们的模型有一些变更</span></span><br><span class="line">python manage.py migrate  <span class="comment">#创建表结构</span></span><br><span class="line">python manage.py createsuperuser  <span class="comment">#来创建超级用户</span></span><br></pre></td></tr></table></figure>
+
+<p>启动服务</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python manage.py runserver</span><br><span class="line">python3 manage.py runserver 0.0.0.0:8000</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-3-安装simpleui及相关插件"><a href="#2-3-安装simpleui及相关插件" class="headerlink" title="2.3 安装simpleui及相关插件"></a>2.3 安装simpleui及相关插件</h4><p>安装simpleui</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install django-simpleui</span><br></pre></td></tr></table></figure>
+
+<p>安装数据导入导出插件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install django-import-export</span><br></pre></td></tr></table></figure>
+
+<p>在自己项目的settings.py文件中INSTALLED_APPS的第一行加入’simpleui’和’import_export’</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">INSTALLED_APPS = [</span><br><span class="line">    <span class="string">&#x27;import_export&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;simpleui&#x27;</span>,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>至此simpleui安装完成，可以启动服务，打开页面及可看到simpleui的新UI界面。</p>
+<h3 id="3-linux-部署"><a href="#3-linux-部署" class="headerlink" title="3 linux 部署"></a>3 linux 部署</h3><h4 id="3-1-部署远程代码"><a href="#3-1-部署远程代码" class="headerlink" title="3.1 部署远程代码"></a>3.1 部署远程代码</h4><p>本地使用freeze命令导出项目依赖关系</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip freeze &gt; requirements.txt</span><br></pre></td></tr></table></figure>
+
+<p>修改settings.py文件ALLOWED_HOSTS为[‘*’]，可以让任何IP访问</p>
+<p>将本地代码COPY到远程服务器</p>
+<p>然后使用命令在服务器上安装所需依赖组件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-2-安装uwsgi及配置"><a href="#3-2-安装uwsgi及配置" class="headerlink" title="3.2 安装uwsgi及配置"></a>3.2 安装uwsgi及配置</h4><p>安装uwsgi</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip isntall uwsgi</span><br></pre></td></tr></table></figure>
+
+<p>在项目目录里创建 uwsgi.ini 文件，添加配置选项</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#添加配置选择</span></span><br><span class="line">[uwsgi]</span><br><span class="line"><span class="comment">#配置和nginx连接的socket连接</span></span><br><span class="line">socket=127.0.0.1:8997</span><br><span class="line"><span class="comment">#配置项目路径，项目的所在目录</span></span><br><span class="line"><span class="built_in">chdir</span>=/home/github/python-dev-django/simpleui_demo/</span><br><span class="line"><span class="comment">#配置wsgi接口模块文件路径,也就是wsgi.py这个文件所在的目录名</span></span><br><span class="line">wsgi-file=simpleui_demo/wsgi.py</span><br><span class="line"><span class="comment">#配置启动的进程数</span></span><br><span class="line">processes=4</span><br><span class="line"><span class="comment">#配置每个进程的线程数</span></span><br><span class="line">threads=2</span><br><span class="line"><span class="comment">#配置启动管理主进程</span></span><br><span class="line">master=True</span><br><span class="line"><span class="comment">#配置存放主进程的进程号文件</span></span><br><span class="line">pidfile=uwsgi.pid</span><br><span class="line"><span class="comment">#配置dump日志记录</span></span><br><span class="line">daemonize=uwsgi.log</span><br></pre></td></tr></table></figure>
+
+<p>首次启动时，让uwsgi.ini 文件生效：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">uwsgi  --ini  uwsgi.ini</span><br></pre></td></tr></table></figure>
+
+<p>后续更新发布时，运行重新加载 </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">uwsgi --reload uwsgi.pid</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-3-安装nginx及配置"><a href="#3-3-安装nginx及配置" class="headerlink" title="3.3 安装nginx及配置"></a>3.3 安装nginx及配置</h4><p>nginx可以手动安装或者使用宝塔面板的软件商店安装.</p>
+<p>安装好后配置 nginx.conf 文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">     listen 80;</span><br><span class="line">     server_name  127.0.0.1; <span class="comment">#改为自己的域名，没域名修改为127.0.0.1:80</span></span><br><span class="line">     charset utf-8;</span><br><span class="line">     location / &#123;</span><br><span class="line">        include uwsgi_params;</span><br><span class="line">        uwsgi_pass 127.0.0.1:8999;  <span class="comment">#端口要和uwsgi里配置的一样</span></span><br><span class="line">        uwsgi_param UWSGI_SCRIPT simpleui_demo.wsgi;  <span class="comment">#wsgi.py所在的目录名+.wsgi</span></span><br><span class="line">        uwsgi_param UWSGI_CHDIR /home/github/python-dev-django/simpleui_demo/; <span class="comment">#项目路径</span></span><br><span class="line">         &#125;</span><br><span class="line"> location /static/ &#123;</span><br><span class="line"> <span class="built_in">alias</span> /data/wwwroot/mysite/static/; <span class="comment">#静态资源路径</span></span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果是宝塔面板安装的，则在面板找到对应nginx配置：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">   include uwsgi_params;</span><br><span class="line">   uwsgi_pass 127.0.0.1:8999;  <span class="comment">#端口要和uwsgi里配置的一样</span></span><br><span class="line">   uwsgi_param UWSGI_SCRIPT simpleui_demo.wsgi;  <span class="comment">#wsgi.py所在的目录名+.wsgi</span></span><br><span class="line">   uwsgi_param UWSGI_CHDIR /home/github/python-dev-django/simpleui_demo; <span class="comment">#项目路径</span></span><br><span class="line">&#125;</span><br><span class="line">  location /static/ &#123;</span><br><span class="line">  <span class="built_in">alias</span> /home/github/python-dev-django/simpleui_demo/static/; <span class="comment">#静态资源路径</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意nginx.conf里的端口配置，要和uwsgi.ini里面的那个端口一致。</p>
+<h4 id="3-4-部署问题"><a href="#3-4-部署问题" class="headerlink" title="3.4 部署问题"></a>3.4 部署问题</h4><p>1 无法启动时，查看nginx日志及uwsgi日志解决。</p>
+<p>2 后台样式不显示的时，项目settings文件增加STATIC_ROOT  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">STATIC_ROOT  = os.path.join(BASE_DIR, <span class="string">&#x27;static&#x27;</span>)<span class="comment">#指定样式收集目录</span></span><br></pre></td></tr></table></figure>
+
+<p>然后使用命令加载静态资源文件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python manage.py collectstatic</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>django</tag>
+        <tag>simpleui</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>通过Vercel 部署轻量级的Python API</title>
+    <url>/2021/04/19/python/serverless%20function/</url>
+    <content><![CDATA[<p>在<code>/api</code>项目目录中，Vercel将通过文件扩展名自动识别此页面上支持的语言，并将其用作无头服务功能。</p>
+<h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a><a href="https://vercel.com/docs/serverless-functions/supported-languages#python">Python</a></h2><p>文件扩展名：<code>.py</code><br>默认版本：Python 3.6</p>
+<p><code>api</code>目录中的Python文件包含从<code>BaseHTTPRequestHandler</code>类继承的处理程序变量或<code>app</code>公开WSGI或ASGI应用程序的变量，将用作无服务器函数。</p>
+<p>例如，以下内容将存在<code>api/date.py</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from http.server import BaseHTTPRequestHandler</span><br><span class="line">from datetime import datetime</span><br><span class="line"></span><br><span class="line">class handler(BaseHTTPRequestHandler):</span><br><span class="line"></span><br><span class="line">  def do_GET(self):</span><br><span class="line">    self.send_response(200)</span><br><span class="line">    self.send_header(&#x27;Content-type&#x27;, &#x27;text/plain&#x27;)</span><br><span class="line">    self.end_headers()</span><br><span class="line">    self.wfile.write(str(datetime.now().strftime(&#x27;%Y-%m-%d %H:%M:%S&#x27;)).encode())</span><br><span class="line">    return</span><br></pre></td></tr></table></figure>
+
+<p>返回当前日期的Python函数示例。</p>
+<p>部署后，上面的示例函数将用作无服务器函数，返回当前日期和时间。通过以下链接实时查看：<a href="https://python-api.now-examples.vercel.app/api/date">https://python-api.now-examples.vercel.app/api/date</a></p>
+<h3 id="高级Python使用"><a href="#高级Python使用" class="headerlink" title="高级Python使用"></a><a href="https://vercel.com/docs/serverless-functions/supported-languages#advanced-python-usage">高级Python使用</a></h3><p>有关Vercel平台上Python的更高级用法（包括<a href="https://vercel.com/docs/runtimes#official-runtimes/python/python-dependencies">依赖项</a>，<a href="https://vercel.com/docs/runtimes#advanced-usage/advanced-python-usage/web-server-gateway-interface">WSGI应用程序</a>，<a href="https://vercel.com/docs/runtimes#advanced-usage/advanced-python-usage/asynchronous-server-gateway-interface">ASGI应用程序</a>或<a href="https://vercel.com/docs/runtimes#advanced-usage/advanced-python-usage">高级配置）</a>，请参阅<a href="https://vercel.com/docs/runtimes#official-runtimes/python">Python运行时文档</a>。</p>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>安装使用Jupyterlab</title>
+    <url>/2021/06/10/python/setup_jupyterlab/</url>
+    <content><![CDATA[<h3 id="1-目的"><a href="#1-目的" class="headerlink" title="1 目的"></a>1 目的</h3><p>本文描述如何安装及使用Jupyter lab</p>
+<h3 id="2-步骤"><a href="#2-步骤" class="headerlink" title="2 步骤"></a>2 步骤</h3><p>使用PIP安装</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install jupyterlab</span><br></pre></td></tr></table></figure>
+
+<p>运行jupyter lab</p>
+<p>命令行输入 ：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jupyter lab</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>devops</category>
+      </categories>
+      <tags>
+        <tag>devops</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>玩转树莓派</title>
+    <url>/2021/03/25/raspi/how-to-use-raspberry/</url>
+    <content><![CDATA[<h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1 前言"></a>1 前言</h1><h2 id="1-1-树莓派是什么"><a href="#1-1-树莓派是什么" class="headerlink" title="1.1 树莓派是什么"></a>1.1 树莓派是什么</h2><p>树莓派作为极客的玩具，对大众而言比较陌生。只有信用卡大小的它，同时也是一台功能完备的“电脑”， 用户可以在上面搭建各种服务和应用。 </p>
+<p><img src="/2021/03/25/raspi/how-to-use-raspberry/raspberry-pi-4-labelled-2857741801afdf1cabeaa58325e07b58.png" alt="Raspberry Pi 4 Specifications"></p>
+<h2 id="1-2-树莓派可以用来做什么"><a href="#1-2-树莓派可以用来做什么" class="headerlink" title="1.2 树莓派可以用来做什么"></a>1.2 树莓派可以用来做什么</h2><p>购买4g内存以上的版本,一定要买外壳带风扇</p>
+<p>可以安装宝塔面板和wordpress,并使用frp内网穿透</p>
+<p>使用Docker部署各种Arm64应用</p>
+<p>搭建Jenkins平台，持续集成运行各种应用脚本</p>
+<p>部署python脚本,运行爬虫/bot,以及Restful API</p>
+<p>搭建GitLab代码仓库</p>
+<p>搭建nextcloud云盘</p>
+<h1 id="2-系统及应用安装"><a href="#2-系统及应用安装" class="headerlink" title="2 系统及应用安装"></a>2 系统及应用安装</h1><h2 id="2-1-Debian-Pi-Aarch64-系统安装"><a href="#2-1-Debian-Pi-Aarch64-系统安装" class="headerlink" title="2.1 Debian-Pi-Aarch64 系统安装"></a>2.1 Debian-Pi-Aarch64 系统安装</h2><p>1 <a href="https://gitee.com/openfans-community/Debian-Pi-Aarch64">Debian-Pi-Aarch64</a> 版本网址及相关介绍</p>
+<p>2 使用SD 卡Format,并烧录系统后，用有线SSH连接登录：<br>    系统默认账户：pi ，默认密码：raspberry  </p>
+<p>3 更改网络开启WIFI</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">run <span class="built_in">command</span> <span class="string">&quot;systemctl disable network-manager&quot;</span> </span><br></pre></td></tr></table></figure>
+
+<p>4 修改 <code>/boot/wpa_supplicant.conf</code> 文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">network=&#123;</span><br><span class="line">ssid=&quot;Jonson&quot;</span><br><span class="line">psk=&quot;123456&quot;</span><br><span class="line">priority=1</span><br><span class="line">id_str=&quot;wifi-1&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>5 更改root帐户启动</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo passwd root</span><br><span class="line">sudo passwd --unlock root</span><br><span class="line">sudo nano /etc/ssh/sshd_config</span><br><span class="line">PermitRootLogin without-password 改为 PermitRootLogin yes</span><br></pre></td></tr></table></figure>
+
+<p>6 重启后就可以拔掉网线，用WIFI 进行SSH连结了</p>
+<h2 id="2-2-Web可视化管理界面"><a href="#2-2-Web可视化管理界面" class="headerlink" title="2.2 Web可视化管理界面"></a>2.2 Web可视化管理界面</h2><p>Debian-Pi-Aarch64 系统安装完成自带</p>
+<p>登录地址 https://你树莓派的IP地址:9090</p>
+<p>说明：请使用系统默认账户pi登录</p>
+<h2 id="2-3-CecOS-CaaS-容器云管理平台"><a href="#2-3-CecOS-CaaS-容器云管理平台" class="headerlink" title="2.3 CecOS CaaS 容器云管理平台"></a>2.3 CecOS CaaS 容器云管理平台</h2><p>Debian-Pi-Aarch64 系统安装完成自带</p>
+<p>登录地址 https://你树莓派的IP地址:8443</p>
+<p>说明：默认管理账户 admin , 默认密码：password 。请登录后立即修改默认密码！</p>
+<h2 id="2-4-宝塔面板"><a href="#2-4-宝塔面板" class="headerlink" title="2.4 宝塔面板"></a>2.4 宝塔面板</h2><p>宝塔Linux面板是提升运维效率的服务器管理软件，支持一键LAMP/LNMP/集群/监控/网站/FTP/数据库/JAVA等100多项服务器管理功能。</p>
+<p>使用脚本一键安装</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget -O install.sh http://download.bt.cn/install/install-ubuntu_6.0.sh &amp;&amp; bash install.sh </span><br></pre></td></tr></table></figure>
+
+<p>装好后会给出访问地址和账号密码，可以在浏览器中输入 localhost:8888 来访问</p>
+<h2 id="2-5-宝塔安装常用应用"><a href="#2-5-宝塔安装常用应用" class="headerlink" title="2.5 宝塔安装常用应用"></a>2.5 宝塔安装常用应用</h2><p>登录宝塔面板，在软件商店可以安装一些基础应用</p>
+<h2 id><a href="#" class="headerlink" title></a><img src="/2021/03/25/raspi/how-to-use-raspberry/image-20210327000301428.png" alt="image-20210327000301428"></h2><h1 id="3-扩展应用"><a href="#3-扩展应用" class="headerlink" title="3 扩展应用"></a>3 扩展应用</h1><h2 id="3-1-安装jenkins"><a href="#3-1-安装jenkins" class="headerlink" title="3.1 安装jenkins"></a>3.1 安装jenkins</h2><h3 id="3-1-1-安装JAVA-JDK"><a href="#3-1-1-安装JAVA-JDK" class="headerlink" title="3.1.1 安装JAVA JDK"></a>3.1.1 安装JAVA JDK</h3><p>首先安装JAVA JDK 1.8</p>
+  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">download latest war wget https://github.com/frekele/oracle-java/releases/</span><br><span class="line">tar zxvf jdk-8u212-linux-arm32-vfp-hflt.tar.gz </span><br><span class="line">sudo mkdir /usr/share/java</span><br><span class="line">sudo mv jdk1.8.0_212/ /usr/share/java/</span><br><span class="line">sudo update-alternatives --install /usr/bin/java java /usr/share/java/jdk1.8.0_212/bin/java 1000</span><br><span class="line">sudo update-alternatives --install /usr/bin/javac javac /usr/share/java/jdk1.8.0_212/bin/javac 1000</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-1-2-安装Jenkins-war"><a href="#3-1-2-安装Jenkins-war" class="headerlink" title="3.1.2 安装Jenkins war"></a>3.1.2 安装Jenkins war</h3><p>然后将最新的<a href="https://www.jenkins.io/download/">jenkins war</a>包上传到主机/home/jenkins目录下，启动：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -jar jenkins.war </span><br><span class="line">java -jar jenkins.war --httpPort=9001  <span class="comment">#指定端口</span></span><br></pre></td></tr></table></figure>
+
+<p>(如果telnet端口访问不了用宝塔开端口)</p>
+<h3 id="3-1-3-配置"><a href="#3-1-3-配置" class="headerlink" title="3.1.3 配置"></a>3.1.3 配置</h3><p>1 登录</p>
+<p>浏览器打开 <a href="http://localhost:9001/">http://localhost:9001</a> 等待Jenkins主页加载</p>
+<p>登录首页需要密码，查看登录用户密码路径为: /root/.jenkkins/secrets/initialAdminPassword</p>
+<p>使用官网的插件下载地址极慢，所以需要更新镜像地址：</p>
+<p>打开 /root/.jenkkins/hudson.model.UpdateCenter.xml 更改插件更新地址为：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">url</span>&gt;</span>https://mirrors.tuna.tsinghua.edu.cn/jenkins/updates/update-center.json<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>2 插件安装</p>
+<p>如果因为网络原因需要手动安装插件.首先官网下载插件或者用之前备份的插件 all_plugin.zip copy 到 plugin下,并解压。</p>
+<p>3 JOB 迁移恢复</p>
+<p>将其它Jenkins备份的JOB 复制到/root/.jenkins/jobs/。</p>
+<p>4 帐户</p>
+<p>新建GIT帐户XXXXX</p>
+<p>5 安装Python依赖 </p>
+<p>安装Python依赖，用于运行常用Python脚本</p>
+  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">apt-get install python3-pip</span><br><span class="line">pip3 install pymysql</span><br><span class="line">pip3 install urlopen</span><br><span class="line">pip3 install requests</span><br><span class="line">pip3 install BeautifulSoup</span><br></pre></td></tr></table></figure>
+
+<p>6 备份</p>
+<p>  宝塔建定时备份任务 root/.jenkins JOBS 任务 到 /www/backup/path</p>
+<p>  宝塔建定时备份任务 root/.jenkins JOBS 任务 到 /www/backup/path</p>
+<h3 id="3-1-4-服务操作命令"><a href="#3-1-4-服务操作命令" class="headerlink" title="3.1.4 服务操作命令"></a>3.1.4 服务操作命令</h3><p>1 开机自动启动</p>
+<p>​    linux home/jenkins目录下,新建jenkins.sh 内容:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pid=`ps -ef | grep jenkins.war | grep -v <span class="string">&#x27;grep&#x27;</span>| awk <span class="string">&#x27;&#123;print $2&#125;&#x27;</span>| wc -l`</span><br><span class="line"><span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$1</span>&quot;</span> = <span class="string">&quot;start&quot;</span> ];<span class="keyword">then</span></span><br><span class="line"> <span class="keyword">if</span> [ <span class="variable">$pid</span> -gt 0 ];<span class="keyword">then</span></span><br><span class="line">   <span class="built_in">echo</span> <span class="string">&#x27;jenkins is running...&#x27;</span></span><br><span class="line"> <span class="keyword">else</span></span><br><span class="line">   <span class="comment">### java启动服务 配置java安装根路径,和启动war包存的根路径</span></span><br><span class="line">   nohup java -jar /home/jenkins/jenkins.war --httpPort=9001  2&gt;&amp;1 &amp;</span><br><span class="line"> <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">elif</span> [ <span class="string">&quot;<span class="variable">$1</span>&quot;</span> = <span class="string">&quot;stop&quot;</span> ];<span class="keyword">then</span></span><br><span class="line"> <span class="built_in">exec</span> ps -ef | grep jenkins | grep -v grep | awk <span class="string">&#x27;&#123;print $2&#125;&#x27;</span>| xargs <span class="built_in">kill</span> -9</span><br><span class="line"> <span class="built_in">echo</span> <span class="string">&#x27;jenkins is stop..&#x27;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line"> <span class="built_in">echo</span> <span class="string">&quot;Please input like this:&quot;</span>./jenkins.sh start<span class="string">&quot; or &quot;</span>./jenkins stop<span class="string">&quot;&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+
+<p>2 启动和停止命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">chmod 777 jenkins.sh</span><br><span class="line">jenkins jenkins.sh start</span><br><span class="line">jenkins jenkins.sh stop</span><br></pre></td></tr></table></figure>
+
+<p>3 注册为服务</p>
+<p>开机启动服务 到 /lib/systemd/system 服务注册目录下创建jenkins.service</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Jenkins</span><br><span class="line">After=network.target</span><br><span class="line"> </span><br><span class="line">[Service]</span><br><span class="line">Type=forking</span><br><span class="line">ExecStart=/bin/bash /home/jenkins/jenkins.sh start</span><br><span class="line">ExecReload=</span><br><span class="line">ExecStop=/bin/bash /home/jenkins/jenkins.sh stop</span><br><span class="line">PrivateTmp=<span class="literal">true</span></span><br><span class="line"> </span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+<p>建好服务后,执行一下命令刷新配置 </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl daemon-reload</span><br></pre></td></tr></table></figure>
+
+<p>启动脚本 </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl start jenkins.service</span><br></pre></td></tr></table></figure>
+
+<p>查看启动脚本状态是否启用成功</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl status jenkins.service</span><br></pre></td></tr></table></figure>
+
+<p>设置开机启动 </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> jenkins.service</span><br></pre></td></tr></table></figure>
+
+<p>停止服务命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl stop jenkins.service</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-2-安装wordpress"><a href="#3-2-安装wordpress" class="headerlink" title="3.2 安装wordpress"></a>3.2 安装wordpress</h2><p>wordpress是一款使用PHP开发的网站程序，可以用来做个人网站博客、商业网站，是全球使用人数最多的网站应用。</p>
+<p>在宝塔面板上安装wordpress非常简单， 在软件商店找到一键部署安装应用列表，选择wordpress一键部署功能，按照提示一路安装下去即可。</p>
+<p><img src="/2021/03/25/raspi/how-to-use-raspberry/image-20210327001149753.png" alt="image-20210327001149753"></p>
+<h2 id="3-3-安装花生壳"><a href="#3-3-安装花生壳" class="headerlink" title="3.3 安装花生壳"></a>3.3 安装花生壳</h2><p>使用<a href="http://service.oray.com/question/2680.html">花生壳</a> 进行内网穿透，使得可以在互联网外访问树莓派上的服务。</p>
+<p>也有类似的内网穿透工具<a href="https://www.natfrp.com/user/">樱花内网穿透</a>。</p>
+<h3 id="3-3-1-安装与使用"><a href="#3-3-1-安装与使用" class="headerlink" title="3.3.1 安装与使用"></a>3.3.1 安装与使用</h3><p><strong>注意：花生壳安装步骤都需要在管理员（Root）权限下运行。</strong></p>
+<p>1.安装</p>
+<p>在树莓派上下载安装包后，通过cd命令进入对应下载目录，输入下面的命令进行安装：<br><strong>dpkg -i ph<a href="https://hsk.oray.com/">ddns</a>_rapi_3.0.3.armhf.deb</strong>（phddns_rapi_3.0.3.armhf.deb为安装包名称）</p>
+<p>安装成功后，将显示此树莓派的SN码、默认密码以及<a href="https://sunlogin.oray.com/personal/">远程</a>管理地址。<br><img src="/2021/03/25/raspi/how-to-use-raspberry/20170222174817450.jpg" alt="img"></p>
+<p>2.操作</p>
+<p>①树莓派<strong>3.0.3</strong>版本命令格式为：<strong>systemctl start phddns</strong><br>其中start为命令操作，<strong>stop</strong>（停止）|<strong>restart</strong>（重启） |<strong>status</strong>（状态）|<strong>version</strong>（版本）|<strong>reset</strong>（重置）同理<br>树莓派<strong>3.0.0-3.0.2</strong>版本操作命令相同，具体如下：<br>卸载：<strong>dpkg -r phddns</strong><br><img src="/2021/03/25/raspi/how-to-use-raspberry/20170222173442440.jpg" alt="img"></p>
+<p>②输入phddns回车后，可以看到扩展的功能：<br><strong>phddns start</strong>（启动）| <strong>stop</strong>（停止）| <strong>restart</strong>（重启）<br><img src="/2021/03/25/raspi/how-to-use-raspberry/20170222173830443.jpg" alt="img"></p>
+<p>③<strong>phddns status</strong>（状态）| <strong>version</strong>（版本）| <strong>reset</strong>（重置）<br><img src="/2021/03/25/raspi/how-to-use-raspberry/20170222174833450.jpg" alt="img"></p>
+<p>④花生壳日志文件存放路况：**/var/log/phddns**<br><img src="/2021/03/25/raspi/how-to-use-raspberry/20170222173926444.jpg" alt="img"></p>
+<h3 id="3-3-2-配置花生壳"><a href="#3-3-2-配置花生壳" class="headerlink" title="3.3.2 配置花生壳"></a>3.3.2 配置花生壳</h3><p>1.浏览器输入远程管理地址<a href="http://b.oray.com/">b.oray.com</a>进入花生壳远程管理页面，输入安装花生壳时生成的SN码及默认密码admin进入；<br><img src="/2021/03/25/raspi/how-to-use-raspberry/202012111039415422.png" alt="img"></p>
+<p>2.首次登录，需要通过扫码或者输入密码的方式进行激活和授权操作，两种方法任选一种；<br><img src="/2021/03/25/raspi/how-to-use-raspberry/202012111042566653.png" alt="img"></p>
+<p>3.注意：如果扫码或者输入密码进行激活的帐户本身并未开通内网穿透功能，只需要按照提示免费激活后，即可使用内网穿透功能；<br><img src="/2021/03/25/raspi/how-to-use-raspberry/202012111040305833.png" alt="img"></p>
+<p>4.如果想要使用其他Oray帐户的功能，可以点击右上角的“切换帐号”，使用其他帐号完成登录后即可使用的更换帐户。<br><img src="/2021/03/25/raspi/how-to-use-raspberry/202012111043466105.png" alt="img"></p>
+<h2 id="3-4-部署Python-Django网站系统"><a href="#3-4-部署Python-Django网站系统" class="headerlink" title="3.4 部署Python Django网站系统"></a>3.4 部署Python Django网站系统</h2><p>同linux下部署python django，详细见另一文章介绍:<a href="/2021/03/26/python/deploy-django-admin-simpleui/">Django SimpleUI管理系统安装及部署</a></p>
+]]></content>
+      <categories>
+        <category>raspi</category>
+      </categories>
+      <tags>
+        <tag>raspberry</tag>
+        <tag>树莓派</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>VPS服务器使用</title>
+    <url>/2021/03/18/vps/how-to-use-vps/</url>
+    <content><![CDATA[<h3 id="1-VPS是什么"><a href="#1-VPS是什么" class="headerlink" title="1 VPS是什么"></a>1 VPS是什么</h3><p>vps是可以看作一台远程个人电脑，但是功能和配置比个人电脑厉害的太多。有独立IP，可以做代理，做各种服务器，建站、搭博客、搭论坛。 </p>
+<p>简单来说，VPS是一台永远在线的远程服务器，能够运行几乎任何操作系统，并且你随时都可以与其建立连接。</p>
+<h3 id="2-VPS可用来做什么"><a href="#2-VPS可用来做什么" class="headerlink" title="2 VPS可用来做什么"></a>2 VPS可用来做什么</h3><p>大家买 vps 都是用来<a href="https://www.vpsjxw.com/tag/build_website/">建网站</a>、搭梯子。但是仅仅只用来建站扶墙的话，简直太浪费 VPS 主机资源了。VPS还可以:</p>
+<ul>
+<li><p>安装宝塔面板并搭建wordpress网站</p>
+</li>
+<li><p>搭建woocommerce电商站</p>
+</li>
+<li><p>使用Docker部署各种应用</p>
+</li>
+<li><p>搭建Jenkins自动化平台，持续集成运行各种应用脚本</p>
+</li>
+<li><p>部署python脚本,运行爬虫/bot</p>
+</li>
+<li><p>构建Restful API服务</p>
+</li>
+<li><p>搭建GitLab代码仓库</p>
+</li>
+<li><p>搭建个人云盘</p>
+</li>
+<li><p>gitbook文档</p>
+</li>
+<li><p>图床</p>
+</li>
+<li><p>通过 huginn 实现全网数据监控与通知工具</p>
+</li>
+<li><p>linux学习操作</p>
+</li>
+</ul>
+<h3 id="3-成本"><a href="#3-成本" class="headerlink" title="3 成本"></a>3 成本</h3><p>新用户购买阿里云的三年1核2G VPS，价格300元左右。</p>
+<p>购买域名每年60以内。</p>
+<p>所以搭建这一套VPS基础服务每年开销160元左右，这绝对算是高性价比的学习及商用工具用品了。</p>
+]]></content>
+      <categories>
+        <category>vps</category>
+      </categories>
+      <tags>
+        <tag>vps</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>脚本生成所有登录用户的操作历史</title>
+    <url>/2021/04/05/linux/linux-history/</url>
+    <content><![CDATA[<p>在linux系统的环境下，不管是root用户还是其它的用户只有登陆系统后用进入操作我们都可以通过命令history来查看历史记录，可是假如一台服务器多人登陆，一天因为某人误操作了删除了重要的数据。这时候通过查看历史记录（命令：history）是没有什么意义了（因为history只针对登录用户下执行有效，即使root用户也无法得到其它用户histotry历史）。那有没有什么办法实现通过记录登陆后的IP地址和某用户名所操作的历史记录呢？答案：有的。</p>
+<p>通过在/etc/profile里面加入以下代码就可以实现：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">PS1=<span class="string">&quot;`whoami`@`hostname`:&quot;</span><span class="string">&#x27;[$PWD]&#x27;</span></span><br><span class="line">USER_IP=`who -u am i 2&gt;/dev/null| awk <span class="string">&#x27;&#123;print $NF&#125;&#x27;</span>|sed -e <span class="string">&#x27;s/[()]//g&#x27;</span>`</span><br><span class="line"><span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$USER_IP</span>&quot;</span> = <span class="string">&quot;&quot;</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">USER_IP=`hostname`</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="keyword">if</span> [ ! -d /tmp/dbasky ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">mkdir /tmp/dbasky</span><br><span class="line">chmod 777 /tmp/dbasky</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="keyword">if</span> [ ! -d /tmp/dbasky/<span class="variable">$&#123;LOGNAME&#125;</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">mkdir /tmp/dbasky/<span class="variable">$&#123;LOGNAME&#125;</span></span><br><span class="line">chmod 300 /tmp/dbasky/<span class="variable">$&#123;LOGNAME&#125;</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="built_in">export</span> HISTSIZE=4096</span><br><span class="line">DT=`date <span class="string">&quot;+%Y-%m-%d_%H:%M:%S&quot;</span>`</span><br><span class="line"><span class="built_in">export</span> HISTFILE=<span class="string">&quot;/tmp/dbasky/<span class="variable">$&#123;LOGNAME&#125;</span>/<span class="variable">$&#123;USER_IP&#125;</span>-dbasky.<span class="variable">$DT</span>&quot;</span></span><br><span class="line">chmod 600 /tmp/dbasky/<span class="variable">$&#123;LOGNAME&#125;</span>/*dbasky* 2&gt;/dev/null</span><br></pre></td></tr></table></figure>
+
+<p>source /etc/profile 使用脚本生效</p>
+<p>退出用户，重新登录</p>
+<p>脚本会在系统的/tmp新建个dbasky目录，记录所有登陆过系统的用户和IP地址（文件名），每当用户登录/退出会创建相应的文件，该文件保存这段用户登录时期内操作历史，可以用这个方法来监测系统的安全性。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root@zsc6:[/tmp/dbasky/root]ls</span><br><span class="line">10.1.80.47 dbasky.2013-10-24_12:53:08</span><br><span class="line">root@zsc6:[/tmp/dbasky/root]cat 10.1.80.47 dbasky.2013-10-24_12:53:08</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用docker自建RSSHUB及Tiny tiny RSS</title>
+    <url>/2021/04/03/web/docker-rsshub/</url>
+    <content><![CDATA[<h3 id="1-使用docker部署RSSHUB"><a href="#1-使用docker部署RSSHUB" class="headerlink" title="1 使用docker部署RSSHUB"></a>1 使用docker部署RSSHUB</h3><h4 id="1-1下载-RSSHub-镜像"><a href="#1-1下载-RSSHub-镜像" class="headerlink" title="1.1下载 RSSHub 镜像"></a>1.1下载 RSSHub 镜像</h4><p>docker pull diygod/rsshub</p>
+<p>安装速度有点儿慢大约需要20分钟，慢慢等待看个短视频或者干点儿其他的即可。 </p>
+<h4 id="1-2-运行-RSSHub"><a href="#1-2-运行-RSSHub" class="headerlink" title="1.2 运行 RSSHub"></a>1.2 运行 RSSHub</h4><p>docker run -d –name rsshub -p 1200:1200 diygod/rsshub</p>
+<p>在浏览器中打开 <a href="https://link.zhihu.com/?target=http://127.0.0.1:1200/">http://127.0.0.1:1200/</a>，enjoy it! ✅</p>
+<p>若是使用云服务器的话，输入对应的IP地址就可以</p>
+<p><a href="https://link.zhihu.com/?target=http://120.178.235.131:1200/">http://120.88.115.131:1200</a></p>
+<p>若是不能打开的话，那么就查看一下自己的1200端口是否打开了。</p>
+<p><img src="/2021/04/03/web/docker-rsshub/v2-8ea23eaa2f50c4d26ec51caf95014feb_720w.jpg" alt="img"></p>
+<p><img src="/2021/04/03/web/docker-rsshub/v2-e9767bd410b7f65a60fdfdcd0b99c95c_720w.jpg" alt="img"></p>
+<p>您可以使用下面的命令来关闭 RSSHub</p>
+<p>docker stop rsshub</p>
+<h4 id="1-3将RSSHub-Radar插件的域名"><a href="#1-3将RSSHub-Radar插件的域名" class="headerlink" title="1.3将RSSHub Radar插件的域名"></a>1.3将RSSHub Radar插件的域名</h4><p><a href="https://link.zhihu.com/?target=https://rsshub.app/">https://rsshub.app</a></p>
+<p>换成自己的域名或者IP地址即可。</p>
+<p>120.178.115.113:1200</p>
+<p>不过，最好是换成域名比较好，在RSSquite里面输入网址的时候，可以进行自动识别网址的。</p>
+<p><a href="https://link.zhihu.com/?target=http://www.xxxxxxx.top:1200/">http://www.xxxxxxx.top:1200/</a></p>
+<p>注意这里是需要填这个端口的。</p>
+<p><img src="/2021/04/03/web/docker-rsshub/v2-94e8f15a95198d335c0babd5e445dcdd_720w.jpg" alt="img"></p>
+<h3 id="2-Docker-镜像方式安装-Tiny-Tiny-RSS"><a href="#2-Docker-镜像方式安装-Tiny-Tiny-RSS" class="headerlink" title="2 Docker 镜像方式安装 Tiny Tiny RSS"></a>2 Docker 镜像方式安装 Tiny Tiny RSS</h3><h4 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h4><p>用 Docker 方式安装 Tiny Tiny RSS 需要的软件条件是：</p>
+<ul>
+<li><strong>Docker CE：</strong>用于提供 Docker 运行环境。</li>
+<li><strong>PostgreSQL/MySQL 数据库：</strong>用于存储 RSS 服务运行所需的记录。Tiny Tiny RSS 的作者推荐优先选用 PostgreSQL，以获得更好的性能。</li>
+<li><strong>Tiny Tiny RSS 本身</strong></li>
+</ul>
+<p>安装一个 PostgreSQL 的 Docker 镜像：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -d --name ttrssdb nornagon/postgres</span><br></pre></td></tr></table></figure>
+
+<p>最后，安装 Tiny Tiny RSS 本身的 Docker 镜像：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -d --name ttrss --link ttrssdb:db -p 9001:80 -e SELF_URL_PATH=http://8.129.115.98:9001 fischerman/docker-ttrss</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-基本使用"><a href="#2-基本使用" class="headerlink" title="2. 基本使用"></a>2. 基本使用</h4><p>安装完成后，访问在上述步骤中设置的网址，即可进入 Tiny Tiny RSS 的 Web 界面。系统默认的管理员账号是 <code>admin</code>，密码是 <code>password</code>。</p>
+<p> 参考： <a href="https://sspai.com/post/41302">https://sspai.com/post/41302</a></p>
+]]></content>
+      <categories>
+        <category>web</category>
+      </categories>
+      <tags>
+        <tag>RSSHUB</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用github及vercel搭建Hexo个人博客</title>
+    <url>/2021/03/19/web/how-to-setup-hexo-blog/</url>
+    <content><![CDATA[<h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h1><p>花了几天时间，使用Hexo的博客框架搭建了一个个人博客网站:<a href="https://learn365.top/">Learn365.Top</a>.<br>基本流程：使用Hexo博客框架，提交代码托管在Github Pages，然后通过Vercel自动部署网站。</p>
+<p>几个为什么： </p>
+<ol>
+<li>为什么不用市面上的各种博客平台如：csdn 简书？<br>博客源文件存储于平台，电脑本地没有备份。而且平台会有各种限制及广告。</li>
+<li>为什么不用自己的服务器搭建？<br>需要搭建网站平台，需要精力去维护服务器。</li>
+<li>为什么不使用Hexo 加 Gitee Pages,Coding Pages等静态托管服务？<br>各种限制，Gitee Pages 绑定域名需要高级版。 Coding pages+持续集成部署虽然也很方便，但是需要绑定腾讯的存储服务和CDN分发服务，不确定费用情况。</li>
+<li>为什么使用Hexo+ Github + Vercel?<br>Hexo是个轻量级的博客框架，支持Markdown写文章。写好文章本地提交到Github后，Vercel能够自动部署。支持绑定域名且无需备案，自动生成证书。所有这一切都是免费的。</li>
+</ol>
+<h2 id="1-1-什么是-Hexo？"><a href="#1-1-什么是-Hexo？" class="headerlink" title="1.1 什么是 Hexo？"></a>1.1 什么是 Hexo？</h2><p><a href="https://hexo.io/zh-cn/">Hexo</a> 是一个快速、简洁且高效的博客框架。Hexo 使用 <a href="http://daringfireball.net/projects/markdown/">Markdown</a>（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。官方提供了300+的主题模板。</p>
+<h2 id="1-2-什么是-Vercel？"><a href="#1-2-什么是-Vercel？" class="headerlink" title="1.2 什么是 Vercel？"></a>1.2 什么是 Vercel？</h2><p><a href="https://links.jianshu.com/go?to=https://vercel.com/">vercel</a>是类似于Github的网站托管服务。将Github授权给vercel后，本地代码推送到Github后，vercel会根据你的网站框架类型自动识别并部署生成静态网页。而且vercel的绑定域名和生成证书非常方便。最重要的是国内访问网站速度非常快。</p>
+<h1 id="2-Hexo搭建步骤"><a href="#2-Hexo搭建步骤" class="headerlink" title="2. Hexo搭建步骤"></a>2. Hexo搭建步骤</h1><h2 id="2-1-安装Git"><a href="#2-1-安装Git" class="headerlink" title="2.1 安装Git"></a>2.1 安装Git</h2><p>参数<a href="https://hexo.io/zh-cn/">Hexo</a>官方文档。Windows版本：下载并安装 <a href="https://git-scm.com/download/win">git</a>.</p>
+<h2 id="2-2-安装nodejs"><a href="#2-2-安装nodejs" class="headerlink" title="2.2 安装nodejs"></a>2.2 安装nodejs</h2><p>Node.js 为大多数平台提供了官方的 <a href="https://nodejs.org/en/download/">安装程序</a>。下载并安装。</p>
+<h2 id="2-3-安装hexo"><a href="#2-3-安装hexo" class="headerlink" title="2.3 安装hexo"></a>2.3 安装hexo</h2><p>打开命令行,安装hexo框架：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>安装完hexo框架后，新建一个myblog(名字自己随便取)的文件夹，并用hexo命令初始化一下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init myblog </span><br></pre></td></tr></table></figure>
+
+<p>进入myblog 文件夹，安装node modules依赖组件模块: </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> myblog </span><br><span class="line">npm install </span><br></pre></td></tr></table></figure>
+
+<p>以上步骤一个基本的博客就搭建好了。</p>
+<p>接下来启动服务：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
+<p>打开hexo的服务，在浏览器输入localhost:4000就可以看到你生成的博客了。</p>
+<h2 id="2-4-将hexo本地文件提交GitHub"><a href="#2-4-将hexo本地文件提交GitHub" class="headerlink" title="2.4 将hexo本地文件提交GitHub"></a>2.4 将hexo本地文件提交GitHub</h2><p>接下来需要把本地的博客文件源码提交到Github托管。</p>
+<p>前提是你需要有一个自己的Github帐户，创建代码仓库，生成SSH添加到github等。然后将本地的文件提交到github建立的代码仓库。这些都Github使用的基础知识，这里不详细展开。</p>
+<h2 id="2-5-配置vercel部署，绑定域名"><a href="#2-5-配置vercel部署，绑定域名" class="headerlink" title="2.5 配置vercel部署，绑定域名"></a>2.5 配置vercel部署，绑定域名</h2><p>Github配置完毕后，就可以进入<a href="https://vercel.com/home">Vercel官网</a>，使用Github的帐号登录:</p>
+<p><img src="/2021/03/19/web/how-to-setup-hexo-blog/vercellogin.png"></p>
+<p>在vercel的Overview菜单下，点击按钮 New Project</p>
+<p>在Import Git Repository选项下，选择需要导入的项目，这里选择之前github建立的博客仓库，然后Import</p>
+<p><img src="/2021/03/19/web/how-to-setup-hexo-blog/vercelimport.png" alt="vercelimport"></p>
+<p>然后一直下一步，直到deploy。</p>
+<p><img src="/2021/03/19/web/how-to-setup-hexo-blog/verceldeploy-1616343575017.png"></p>
+<p>deploy完成后，可以在Overview菜单下，看到新建的项目,至此项目已经创建完成，可以通过vercel自动配置的子域名访问了：</p>
+<p><img src="/2021/03/19/web/how-to-setup-hexo-blog/image-20210322002115206.png" alt="image-20210322002115206"></p>
+<p>接下来是绑定自己的域名，前提是自己得先在域名提供商处买一个域名，然后才可以进行绑定域名操作：</p>
+<p>首先点击Domains菜单下的的Add按钮</p>
+<p><img src="/2021/03/19/web/how-to-setup-hexo-blog/image-20210322012310611.png" alt="image-20210322012310611"></p>
+<p>在添加域名页面选项需要绑定的项目，然后下一步：</p>
+<p><img src="/2021/03/19/web/how-to-setup-hexo-blog/image-20210322012344189.png" alt="image-20210322012344189"></p>
+<p>接下来输入自己的域名。</p>
+<p><img src="/2021/03/19/web/how-to-setup-hexo-blog/image-20210322012357568.png" alt="image-20210322012357568"></p>
+<p>完成后会跳转到域名配置信息页面,点Nameservers，获得DNS信息。</p>
+<p><img src="/2021/03/19/web/how-to-setup-hexo-blog/image-20210322012434299.png" alt="image-20210322012434299"></p>
+<p>将Vercel处获得的DNS服务信息配置到自己的域名控制台的DNS处，我的是阿里云的域名管理平台，配置如下：</p>
+<p><img src="/2021/03/19/web/how-to-setup-hexo-blog/image-20210322013138179.png" alt="image-20210322013138179"></p>
+<p>域名绑定完成，Vercel会自动生成SSL证书。等待十几分钟待配置生效后，就可以用我们的域名访问网站了。</p>
+<p>至此博客搭建基本完成，后续需要修改网站时，只需将最新的变更提交到Github上，Vercel会自动同步过来并部署，不需要再做额外的步骤。</p>
+<p>最后用站长站的网站测速工具<a href="http://tool.chinaz.com/speedtest/">国内测速</a>测试一下速度：</p>
+<p><img src="/2021/03/19/web/how-to-setup-hexo-blog/1.png"></p>
+<p>网站打开速度飞快。</p>
+<h1 id="3-Hexo基本配置"><a href="#3-Hexo基本配置" class="headerlink" title="3. Hexo基本配置"></a>3. Hexo基本配置</h1><p>博客框架搭建好，接下来是博客的主题更改，以及日常博客的增删改，图片上传优化等配置。</p>
+<h2 id="3-1-Hexo更换主题"><a href="#3-1-Hexo更换主题" class="headerlink" title="3.1 Hexo更换主题"></a>3.1 Hexo更换主题</h2><ol>
+<li><p>打开Hexo官网的<a href="https://hexo.io/themes/">主题的界面</a>，选择喜欢的，然后点击<strong>名称</strong>跳转到<strong>GitHub</strong>仓库选择<em>下载或者克隆</em>对应的<strong>zip</strong>文件到本地，并且解压到网站目录下的<strong>themes</strong>目录。</p>
+</li>
+<li><p>修改主题的自带配置文件**_config.yml**,将theme属性值改成下载的主题目录名称即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">theme: hexo-theme-landscape</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="3-2-Hexo新增博客"><a href="#3-2-Hexo新增博客" class="headerlink" title="3.2 Hexo新增博客"></a>3.2 Hexo新增博客</h2><p>新建博客文章时，可以使用如下命令，会在source\_posts的目录生成新的md文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new &#x27;your blog title&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>在文章的 <a href="https://hexo.io/docs/front-matter">front-matter</a> 中可以修改文章标题、时间，添加分类和标签等属性。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">title: your blog title</span><br><span class="line">date: 2021-03-18 21:55:19</span><br><span class="line">categories:</span><br><span class="line">- blog</span><br><span class="line">  tags: </span><br><span class="line">- hexo</span><br><span class="line">- blog</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-3-Hexo博客中插入本地图片"><a href="#3-3-Hexo博客中插入本地图片" class="headerlink" title="3.3 Hexo博客中插入本地图片"></a>3.3 Hexo博客中插入本地图片</h2><p>一般情况在写博客时，如果是从外链插入的图片，不会有什么问题。但是如果是从本地引入的图片时，部署后会访问不了。需要配置以下几个步骤：</p>
+<ol>
+<li>安装hexo-asset-image插件：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install https://github.com/7ym0n/hexo-asset-image --save</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>然后修改网站配置文件中的代码：<em>post_asset_folder: true</em></p>
+</li>
+<li><p>然后在网站目录下运行<em>Git Bash Here</em>，执行命令:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new <span class="string">&#x27;your blog title&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>运行成功之后就会在网站下的source/posts中分别生成对应的Markdown文件与同名空目录；你的博客文章直接在生成的*.md<em>文件中编辑，而引用的图片则以</em>Markdown<em>标准形式</em>![]*(图片的相对路径)的形式进行，这里的图片路径需要注意要采用相对路径，即(<strong>注意需要将‘’转变为’/‘</strong>)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/your blog title/picture<span class="string">&#x27;s name.png/jpg</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>如果你的是Typora的Markdown编辑工具，则在偏好设置里的图像配置中，下拉框选择<code>复制到指定路径</code>,并将前三个选项勾选上。</p>
+<p><img src="/2021/03/19/web/how-to-setup-hexo-blog/image-20210322004952738.png" alt="image-20210322004952738"></p>
+<p><img src="/2021/03/19/web/how-to-setup-hexo-blog/image-20210322005017329.png" alt="image-20210322005017329"></p>
+<p>配置完成后，后续引用本地图片时会自动将图片COPY到博客文章的同名文件目录下。也可时直接将截图粘贴到文件内容内，图片也会自动保存到博客文件的同名目录下，非常方便。</p>
+<h2 id="3-4-文章隐藏功能"><a href="#3-4-文章隐藏功能" class="headerlink" title="3.4 文章隐藏功能"></a>3.4 文章隐藏功能</h2><p> 在用Hexo写博客文章时，有些文章不想对外开放，于是想到给文章加上隐藏功能。</p>
+<p>实现这个功能使用了Hexo 插件 **<a href="https://github.com/printempw/hexo-hide-posts">hexo-hide-posts</a>**，网上也有其它实现的方法，感觉用这个插件比较简单。</p>
+<p>安装</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-hide-posts --save</span><br></pre></td></tr></table></figure>
+
+<p>使用</p>
+<p>在文章的 <a href="https://hexo.io/docs/front-matter">front-matter</a> 中添加 <code>hidden: true</code> 即可隐藏文章。</p>
+<p>比如我们隐藏了 <code>source/_posts/lorem-ipsum.md</code> 这篇文章：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: &#x27;Lorem Ipsum&#x27;</span><br><span class="line">date: &#x27;2021/3/10 11:45:14&#x27;</span><br><span class="line">hidden: true</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>重新部署后，加上这个标签的文章就不会显示出来了。 </p>
+<h1 id="4-Hexo扩展"><a href="#4-Hexo扩展" class="headerlink" title="4. Hexo扩展"></a>4. Hexo扩展</h1><h2 id="4-1-百度统计"><a href="#4-1-百度统计" class="headerlink" title="4.1 百度统计"></a>4.1 百度统计</h2><p>百度统计是百度推出的一款免费的专业网站<a href="https://baike.baidu.com/item/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/2776945">流量分析</a>工具，提供的功能包括：流量分析、来源分析、网站分析等多种统计分析服务。</p>
+<p>登录<a href="https://tongji.baidu.com/">百度统计</a>，添加自己的网站，然后在代码获取处获得统计脚本。</p>
+<p><img src="/2021/03/19/web/how-to-setup-hexo-blog/image-20210322213231470.png" alt="image-20210322213231470"></p>
+<p>把代码复制到footer.ejs文件中，然后再进行一下安装检查，半小时左右就可以在百度统计里面看到自己的网站信息了。</p>
+<h2 id="4-2-百度Google收录"><a href="#4-2-百度Google收录" class="headerlink" title="4.2 百度Google收录"></a>4.2 百度Google收录</h2><ol>
+<li>登录百度站长平台添加网站</li>
+</ol>
+<p>登录<a href="https://ziyuan.baidu.com/">百度搜索资源平台</a>——点击用户中心——点击站点管理——添加网站，输入需要验证的网址</p>
+<p><img src="/2021/03/19/web/how-to-setup-hexo-blog/image-20210322222803310.png" alt="image-20210322222803310"></p>
+<p>验证网站有三种方式：文件验证、HTML标签验证、CNAME验证。这里我选择第二种HTML标签验证方式。将百度提供的脚本添加到网站的head 文件头中，然后在百度平台验证网站。</p>
+  <meta name="baidu-site-verification" content="code-hpjBSRmd5C">
+
+<p><img src="/2021/03/19/web/how-to-setup-hexo-blog/image-20210322225856845.png" alt="image-20210322225856845"></p>
+<ol start="2">
+<li>提交链接</li>
+</ol>
+<p>需要使用npm自动生成网站的sitemap，然后将生成的sitemap提交到百度和其他搜索引擎。</p>
+<p>分别安装百度和google插件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-sitemap --save</span><br><span class="line">npm install hexo-generator-baidu-sitemap --save</span><br></pre></td></tr></table></figure>
+
+<p>在博客目录的_config.yml中修改或者如下代码：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># URL 改成自己网站URL </span></span><br><span class="line">url: https://learn365.top</span><br><span class="line"></span><br><span class="line"><span class="comment"># 自动生成sitemap</span></span><br><span class="line">sitemap:</span><br><span class="line">  path: sitemap.xml</span><br><span class="line">baidusitemap:</span><br><span class="line">  path: baidusitemap.xml</span><br></pre></td></tr></table></figure>
+
+<p>然后hexo编译的时候会自动在根目录生成站点地图。</p>
+<p>然后就可以向百度提交你的站点地图了。把两个sitemap地址，提交上去。过个十天半个月再去site:&lt;域名&gt;看看有没有被收录。</p>
+<p><img src="/2021/03/19/web/how-to-setup-hexo-blog/image-20210323001214956.png" alt="image-20210323001214956"></p>
+<p>google的SEO流程一样进入google站点地图，提交网站和sitemap.xml，就可以了。</p>
+<h2 id="4-3-访问量和访问人次统计"><a href="#4-3-访问量和访问人次统计" class="headerlink" title="4.3 访问量和访问人次统计"></a>4.3 访问量和访问人次统计</h2><p>访问量和访问人次统计使用不蒜子的极简网页计数器，在footer.ejs加入以下脚本即可：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">async</span> <span class="attr">src</span>=<span class="string">&quot;//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">&quot;busuanzi_container_site_pv&quot;</span>&gt;</span> 访问 <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span> <span class="attr">target</span>=<span class="string">&quot;_blank&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">&quot;busuanzi_value_site_pv&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span> 次 <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">&quot;busuanzi_container_site_uv&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span> <span class="attr">target</span>=<span class="string">&quot;_blank&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">&quot;busuanzi_value_site_uv&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span> 人<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="5-参考"><a href="#5-参考" class="headerlink" title="5. 参考"></a>5. 参考</h1><p>hexo史上最全搭建教程 <a href="https://blog.csdn.net/sinat_37781304/article/details/82729029">https://blog.csdn.net/sinat_37781304/article/details/82729029</a></p>
+<p>Hexo | NexT打造一个炫酷博客  <a href="https://blog.csdn.net/u012294515/article/details/83094693">https://blog.csdn.net/u012294515/article/details/83094693</a></p>
+<p>打造个性超赞博客 Hexo + NexT + GitHub Pages 的超深度优化 <a href="https://io-oi.me/tech/hexo-next-optimization/">https://io-oi.me/tech/hexo-next-optimization/</a></p>
+<p>【搜索优化】Hexo-next百度和谷歌搜索优化 <a href="http://www.ehcoo.com/seo.html">http://www.ehcoo.com/seo.html</a></p>
+]]></content>
+      <categories>
+        <category>web</category>
+      </categories>
+      <tags>
+        <tag>blog</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何检测网页打开速度</title>
+    <url>/2021/03/23/web/how-to-test-web-speed/</url>
+    <content><![CDATA[<p>平时自己搭建好的网站，想测试一下打开速度，可以用站长站提供的网页测速工具：</p>
+<p>打开路径 ：<a href="http://tool.chinaz.com/">站长工具</a> &gt; <a href="http://ping.chinaz.com/">Ping检测</a></p>
+<p>检测类型分别包括： </p>
+<p><a href="http://ping.chinaz.com/">Ping检测</a> <a href="http://tool.chinaz.com/speedtest/">国内测速</a> <a href="http://tool.chinaz.com/speedworld/">国际测速</a> <a href="http://tool.chinaz.com/speedcom/">网站速度对比</a> <a href="http://tool.chinaz.com/dns/">DNS查询</a> <a href="http://tool.chinaz.com/Tracert/">路由器追踪</a></p>
+<p>在对应的工具下输入网址即可检测：</p>
+<p><img src="/2021/03/23/web/how-to-test-web-speed/0.png"></p>
+<p>国内测速：</p>
+<p><img src="/2021/03/23/web/how-to-test-web-speed/1.png"></p>
+<p>国际测速：</p>
+<p><img src="/2021/03/23/web/how-to-test-web-speed/2.png"></p>
+]]></content>
+      <categories>
+        <category>web</category>
+      </categories>
+      <tags>
+        <tag>web</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何在本地安装调试Wordpress</title>
+    <url>/2021/03/22/web/install-wordpress-local/</url>
+    <content><![CDATA[<h3 id="关于localwp"><a href="#关于localwp" class="headerlink" title="关于localwp"></a>关于localwp</h3><p>localwp是一个可以在本地快速安装和开发wordpress的工具，对wordpress的设计及开发者非常有用。 </p>
+<p><img src="/2021/03/22/web/install-wordpress-local/image-20210327011831404.png" alt="image-20210327011831404"></p>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><p>它具有以下一系列特点：</p>
+<p><strong>一键式WordPress安装</strong></p>
+<p>Local使创建本地WordPress网站变得轻而易举，因此不必费心设置自己的网站。一键点击，网站即可准备就绪，包括SSL！</p>
+<p><strong>一系列预启动工具</strong></p>
+<p>借助Local的损坏的链接检查器，图像优化器和即时重新加载功能等工具，可以放心地运行网站。</p>
+<p><strong>先进的开发功能</strong></p>
+<p>Local提供根SSH访问，WP-CLI以及热交换PHP 5.6，PHP 7.3的功能。</p>
+<p><strong>实时链接</strong></p>
+<p>可创建URL将本地WordPress网站发送给客户，合作者，朋友。</p>
+<p><strong>本地连接</strong></p>
+<p>将具有Local的站点推和拉到Flywheel或WP Engine之类的主机，以进行超级简化的脱机编辑和上线过程。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>下载地址:<a href="https://localwp.com/">https://localwp.com/</a></p>
+]]></content>
+      <categories>
+        <category>web</category>
+      </categories>
+      <tags>
+        <tag>wordpress</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo Next主题使用</title>
+    <url>/2021/06/07/web/next_theme/</url>
+    <content><![CDATA[<h2 id="1-目的"><a href="#1-目的" class="headerlink" title="1 目的"></a>1 目的</h2><p>本文档主要讲述如何安装hexo搭建博客并且安装Next主题</p>
+<h2 id="2-步骤"><a href="#2-步骤" class="headerlink" title="2 步骤"></a>2 步骤</h2><h3 id="2-1-安装Hexo框架及初始化"><a href="#2-1-安装Hexo框架及初始化" class="headerlink" title="2.1 安装Hexo框架及初始化"></a>2.1 安装Hexo框架及初始化</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>安装完hexo框架后，新建一个myblog(名字自己随便取)的文件夹，并用hexo命令初始化一下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init myblog </span><br></pre></td></tr></table></figure>
+
+<p>进入myblog 文件夹，安装node modules依赖组件模块: </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> myblog </span><br><span class="line">npm install </span><br></pre></td></tr></table></figure>
+
+<p>以上步骤一个基本的博客就搭建好了</p>
+<h3 id="2-2-安装Next主题"><a href="#2-2-安装Next主题" class="headerlink" title="2.2 安装Next主题"></a>2.2 安装Next主题</h3><p>下载Next主题到Theme目录下，并更改名称为Next：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/iissnan/hexo-theme-next</span><br></pre></td></tr></table></figure>
+
+<p>打开Config.xml配置文件，启用 NexT 主题</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-设定选择-Scheme"><a href="#2-3-设定选择-Scheme" class="headerlink" title="2.3 设定选择 Scheme"></a>2.3 设定选择 Scheme</h3><p>主题目录下修改配置文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">scheme: Gemini</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-新增菜单"><a href="#2-4-新增菜单" class="headerlink" title="2.4 新增菜单"></a>2.4 新增菜单</h3><p>主题目录下修改配置文件menu节点：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / || fa fa-home</span><br><span class="line">  #about: /about/ || fa fa-user   </span><br><span class="line">  devops: /categories/devops/ || fa fa-book fa-fw</span><br><span class="line">  树莓派: /categories/raspi/ || fa fa-tags</span><br><span class="line">  web: /categories/web/ || fa fa-calendar</span><br><span class="line">  vps: /categories/vps/ || fa fa-sitemap</span><br><span class="line">  linux: /categories/linux/ || fa fa-flask fa-fw</span><br><span class="line">  #categories: /categories/ || fa fa-heartbeat </span><br><span class="line">  #tags: /tags/ || fa fa-tags</span><br><span class="line">  archives: /archives/ || fa fa-archive</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-5-Hexo博客中插入本地图片"><a href="#2-5-Hexo博客中插入本地图片" class="headerlink" title="2.5 Hexo博客中插入本地图片"></a>2.5 Hexo博客中插入本地图片</h3><p>一般情况在写博客时，如果是从外链插入的图片，不会有什么问题。但是如果是从本地引入的图片时，部署后会访问不了。需要配置以下几个步骤：</p>
+<ol>
+<li>安装hexo-asset-image插件：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install https://github.com/7ym0n/hexo-asset-image --save</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>然后修改网站配置文件中的代码：<em>post_asset_folder: true</em></li>
+</ol>
+]]></content>
+      <categories>
+        <category>web</category>
+      </categories>
+      <tags>
+        <tag>blog</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+</search>
